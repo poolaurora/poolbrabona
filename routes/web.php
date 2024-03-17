@@ -90,6 +90,10 @@ Route::middleware([
             Route::get('/historico', [DashboardController::class, 'HistoryIndex'])->name('saques.historico');
         });
 
+        Route::group(['prefix' => 'tutoriais'], function () {
+            Route::get('/menu', [DashboardController::class, 'TutoriaisIndex'])->name('tutoriais.menu');
+        });
+
         Route::group(['prefix' => 'maquinas'], function () {
             Route::get('/menu', [DashboardController::class, 'indexMachines'])->name('maquinas.menu');
             Route::get('/upgrade/{id}', [MachineController::class, 'upgradeMachine'])->name('maquinas.upgrade');

@@ -294,8 +294,8 @@
     <section id="features" class="bg-gray-900 text-white py-10">
   <div class="container mx-auto px-4 w-full">
     <div class="text-center flex flex-col items-center">
-      <h2 class="text-4xl md:text-6xl font-bold w-9/12">Maximize Seus Ganhos, <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600">Tecnologia que Gera Resultados.</span></h2>
-      <p class="mt-8 text-xl w-8/12 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600">Desbloqueie o potencial máximo de uma mineração eficiente. Minere sem esforços e alcance resultados.</p>
+      <h2 class="text-4xl md:text-6xl font-bold w-9/12">Explore Potenciais Oportunidades <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600">com Nossa Tecnologia.</span></h2>
+      <p class="mt-8 text-xl w-8/12 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600">Desbloqueie o potencial máximo de uma mineração eficiente. Minere sem esforços e alcance suas metas.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 p-8">
@@ -312,7 +312,7 @@
         </lord-icon>
         </div>
         <h3 class="text-lg font-semibold mb-2">Mineração Eficiente</h3>
-        <p class="text-md text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-gray-500 to-gray-600">Maximize seus lucros aproveitando nossa solução avançada de mineração otimizada, desenhada para oferecer resultados superiores.</p>
+        <p class="text-md text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-gray-500 to-gray-600">Maximize sua mineração aproveitando nossa solução avançada de mineração otimizada, desenhada para oferecer um excelente desempenho.</p>
       </div>
 
       <div class="flex flex-col items-center text-center">
@@ -342,7 +342,7 @@
         </lord-icon>
         </div>
         <h3 class="text-lg font-semibold mb-2">Mineração Ininterrupta, Lucros Maximizados</h3>
-        <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Garanta um fluxo contínuo de rendimentos com nossas máquinas que operam sem parar, assegurando que cada segundo seja aproveitado.</p>
+        <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Garanta um fluxo contínuo com nossas máquinas que operam sem parar, assegurando que cada segundo seja aproveitado.</p>
       </div>
     </div>
   </div>
@@ -373,7 +373,8 @@
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
                         <img src="/images/bear.png">
                         <h2 class="text-2xl font-bold mb-4">Bear</h2>
-                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 font-bold">Retorno de R$2.500,00</p>
+                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$1.600,00
+                       </p>
                         <p class="text-4xl font-bold mb-6">R$349,90/<b class="text-blue-400">mês</b></p>
                         <ul class="mb-6">
                             <li>✔ 1 MÁQUINA </li>
@@ -396,7 +397,7 @@
                         </div>
                         <img src="/images/shark.png" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
-                      <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold">Retorno de R$15.000,00</p>
+                      <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p>
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$719,92/<b class="text-emerald-400">mês</b></p>
                         <span class="text-emerald-500 text-lg">Parabéns! Você ganhou 20% de desconto!</span>
                         <ul class="mb-6">
@@ -416,7 +417,7 @@
                         </div>
                         <img src="/images/shark.png" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
-                      <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold">Retorno de R$15.000,00</p> 
+                      <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p> 
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$899,90/<b class="text-emerald-400">mês</b></p>
                         <ul class="mb-6">
                             <li>✔ 4 MÁQUINAS</li>
@@ -436,7 +437,7 @@
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
                         <img src="/images/lion.png">
                         <h2 class="text-2xl font-bold mb-4">Lion</h2>
-                  <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-orange-400 via-orange-600 to-orange-800 font-bold">Retorno de R$7.500,00</p>
+                  <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-orange-400 via-orange-600 to-orange-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$2.400,00</p>
                         <p class="text-4xl font-bold mb-6">R$569,90/<b class="text-orange-400">mês</b></p>
                         <ul class="mb-6">
                             <li>✔ 3 MÁQUINAS</li>
@@ -472,7 +473,7 @@
                             style="width:100px;height:100px">
                         </lord-icon>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-blue-500 text-white">3</span> MÁQUINAS <span class="p-1 rounded-lg bg-blue-500 text-white">LEVEL 03</span></h3>
+                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-blue-500 text-white">2</span> MÁQUINAS <span class="p-1 rounded-lg bg-blue-500 text-white">LEVEL 02</span></h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-blue-400 via-gray-500 to-gray-600">Garanta um fluxo contínuo de rendimentos com nossas máquinas que operam sem parar, assegurando que cada segundo seja aproveitado para aumentar seus lucros.</p>
                 </div>
 
@@ -564,7 +565,7 @@
                             style="width:100px;height:100px">
                         </lord-icon>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-emerald-500 text-white">3</span> MÁQUINAS <span class="p-1 rounded-lg bg-emerald-500 text-white">LEVEL 03</span></h3>
+                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-emerald-500 text-white">4</span> MÁQUINAS <span class="p-1 rounded-lg bg-emerald-500 text-white">LEVEL 03</span></h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Garanta um fluxo contínuo de rendimentos com nossas máquinas que operam sem parar, assegurando que cada segundo seja aproveitado para aumentar seus lucros.</p>
                 </div>
 
@@ -657,7 +658,7 @@
                             style="width:100px;height:100px">
                         </lord-icon>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-orange-500 text-white">3</span> MÁQUINAS <span class="p-1 rounded-lg bg-orange-500 text-white">LEVEL 03</span></h3>
+                    <h3 class="text-lg font-semibold mb-2">ACOMPANHA <span class="p-1 rounded-lg bg-orange-500 text-white">3</span> MÁQUINAS <span class="p-1 rounded-lg bg-orange-500 text-white">LEVEL 02</span></h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-orange-400 via-gray-500 to-gray-600">Garanta um fluxo contínuo de rendimentos com nossas máquinas que operam sem parar, assegurando que cada segundo seja aproveitado para aumentar seus lucros.</p>
                 </div>
 
@@ -781,6 +782,59 @@
                         <p class="text-gray-400 text-base pt-2 leading-relaxed">
                             Sim, você pode alterar seu plano a qualquer momento. Para fazer isso, acesse as configurações da sua conta e selecione a opção de alteração de plano.
                         </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        É simples de usar?
+                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                         Sim, adolescentes e idosos, bem como pessoas das mais variadas idades, utilizam nossa plataforma de mineração.
+                        </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        Quais são as criptomoedas mineradas?
+                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                        Trabalhamos exclusivamente com Bitcoin.
+                        </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        Quais são os métodos de saque?
+                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                        Pix, TED e Bitcoin
+                        </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        Quando posso efetuar saques?
+                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                        Os saques podem ser solicitados a qualquer momento. Após a aprovação, o crédito pode levar no mínimo 4 horas e no máximo 3 dias úteis para ser efetivado.
+                        Os limites minimos para saques são calculados automaticamente pela plataforma e variam de usuário para usuário (Normalmente os usuários efetuam o primeiro saque em até 10 dias)
+                        </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        Como posso ter certeza da segurança do serviço?
+                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                        Trabalhamos em parceria com a renomada plataforma de mediação de pagamentos Kiwify, uma das maiores da América Latina, o que garante a segurança das transações.
+                        </p>
+                    </details>
+
+                    <details class="group">
+                        <summary class="text-lg font-semibold cursor-pointer p-4 bg-gray-800">
+                        Qual é o período de acesso à plataforma?                        </summary>
+                        <p class="text-gray-400 text-base pt-2 leading-relaxed">
+                        O acesso à plataforma é concedido mediante a adesão a um plano mensal, com duração de 30 dias a partir da data de pagamento.                        </p>
                     </details>
                     <!-- Adicione mais perguntas conforme necessário -->
                 </div>

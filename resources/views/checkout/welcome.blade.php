@@ -152,7 +152,10 @@
             </div>
 
         </div>
-
+        <div class="flex flex-col md:flex-row items-center mt-2 w-full justify-center mt-4 gap-4">
+            <img class="w-40 bg-transparent" src="/images/kiwify.png" alt="">
+            <img class="w-80 bg-transparent" src="/images/compra.png" alt="">
+        </div>
         
     </div>
 

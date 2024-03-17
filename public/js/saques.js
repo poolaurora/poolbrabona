@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'Eduardo Pereira', 'Monica Carvalho', 'Angelo Martins', 'Clara Mendes'
           ];
                     
-          const valorMin = 100;
-          const valorMax = 1000;
+          const valorMin = 500;
+          const valorMax = 10000;
           
           const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
           const valorAleatorio = (Math.random() * (valorMax - valorMin) + valorMin).toFixed(2);

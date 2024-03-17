@@ -191,4 +191,11 @@ class DashboardController extends Controller
     }
 
 
+    public function TutoriaisIndex(){
+        
+
+        return view('tutoriais.tutoriais');
+    }
+
+
 }

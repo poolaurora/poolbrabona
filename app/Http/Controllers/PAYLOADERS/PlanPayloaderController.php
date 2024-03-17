@@ -105,7 +105,7 @@ class PlanPayloaderController extends Controller
             break;
         case 'Bear':
             $maquinas = 2;
-            $level = 1;
+            $level = 2;
             $user->assignRole('bear');
             break;
         default:

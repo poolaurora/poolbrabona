@@ -43,9 +43,9 @@
                     </ul>
 
                     <!-- Limitações -->
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Limitações</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Reembolso</h2>
                     <p class="text-gray-600 mb-4">
-                        Em nenhum caso a Aurora Miners ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro, ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em Aurora Miners, mesmo que Aurora Miners ou um representante autorizado da Aurora Miners tenha sido notificado oralmente ou por escrito da possibilidade de tais danos.
+                        Devido à entrega imediata e custos diretos do nosso produto, cada pedido de reembolso requer análise individual. Reembolsamos somente em caso de falhas técnicas ou problemas de saque, visando sempre a satisfação e confiança do cliente.
                     </p>
 
                     <!-- Precisão dos Materiais -->

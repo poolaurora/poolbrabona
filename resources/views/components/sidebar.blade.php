@@ -127,6 +127,26 @@
                     </ul>
                 </li>
 
+                <li>
+                    <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
+                        <div class="@if(request()->routeIs('maquinas.*'))
+                            text-emerald-400
+                            @endif">
+                            <i class="fa-solid fa-book mr-3 text-xl"></i>
+                            <span class="text-lg">Tutoriais</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-gray-600"></i>
+                    </button>
+                    <!-- Submenu, hidden by default -->
+                    <ul class="hidden pl-2 w-full mt-2">
+                        <li><a href="{{ route('tutoriais.menu') }}" class="
+                            @if(request()->routeIs('tutoriais.menu'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Ver tutoriais</a></li>
+                    </ul>
+                </li>
+
                 @role('admin')
                 <li>
                     <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
@@ -377,6 +397,26 @@
                         <!-- Additional options can be added here -->
                     
                     
+                    </ul>
+                </li>
+
+                <li>
+                    <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
+                        <div class="@if(request()->routeIs('maquinas.*'))
+                            text-emerald-400
+                            @endif">
+                            <i class="fa-solid fa-book mr-3 text-xl"></i>
+                            <span class="text-lg">Tutoriais</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-gray-600"></i>
+                    </button>
+                    <!-- Submenu, hidden by default -->
+                    <ul class="hidden pl-2 w-full mt-2">
+                        <li><a href="{{ route('tutoriais.menu') }}" class="
+                            @if(request()->routeIs('tutoriais.menu'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Ver tutoriais</a></li>
                     </ul>
                 </li>
 
