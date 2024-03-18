@@ -728,7 +728,7 @@
 
         </section>
 
-        <section class="bg-gray-900 text-white py-10">
+        <section id="saques" class="bg-gray-900 text-white py-10">
             <div class="justify-center flex text-center flex-col py-4">
                 <h1 class="text-white font-bold lg:text-5xl text-4xl">Saques ao vivo</h1>
                 <span class="text-gray-500 lg:text-3xl text-2xl">Veja os saques ao vivo de nossos usuários</span>
@@ -841,7 +841,7 @@
 
         @if(!request()->cookie('userDiscount'))     
 
-        <section id="caseSec" class="bg-gray-900 text-white py-10">
+        <section id="descontos" class="bg-gray-900 text-white py-10">
             <div class="justify-center flex text-center ">
                 <h1 class="text-white font-bold lg:text-5xl text-4xl">Teste sua SORTE</h1>
             </div>
