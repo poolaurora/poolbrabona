@@ -48,7 +48,7 @@
                     @elseif($message->user->hasRole('shark'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/shark.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800 class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-emerald-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -62,7 +62,7 @@
                     @elseif($message->user->hasRole('lion'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/lion.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374386900992/lion.png?ex=660abe10&is=65f84910&hm=6fcf46409cd7dbca33941a05e259176971f4a70e54c634d9d9777cd02107163f&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-orange-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -76,7 +76,7 @@
                     @elseif($message->user->hasRole('bear'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/bear.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374067875850/bear.png?ex=660abe0f&is=65f8490f&hm=ecad8526918ef51b8ac8d3e2ebe25c20419fea40f9e8b56c5844edbbd138ff3d&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-blue-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -167,7 +167,7 @@
                     @elseif($message->user->hasRole('shark'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/shark.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800 class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-emerald-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -181,7 +181,7 @@
                     @elseif($message->user->hasRole('lion'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/lion.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374386900992/lion.png?ex=660abe10&is=65f84910&hm=6fcf46409cd7dbca33941a05e259176971f4a70e54c634d9d9777cd02107163f&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-orange-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -195,7 +195,7 @@
                     @elseif($message->user->hasRole('bear'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="/images/bear.png" class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374067875850/bear.png?ex=660abe0f&is=65f8490f&hm=ecad8526918ef51b8ac8d3e2ebe25c20419fea40f9e8b56c5844edbbd138ff3d&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-blue-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
