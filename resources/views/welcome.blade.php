@@ -212,7 +212,7 @@
                 <!-- Responsive iframe container -->
                 <div class="w-screen md:max-w-4xl mx-auto">
                     <div class="w-full iframe flex justify-center">
-                        <iframe class="w-full md:h-auto" src="https://www.youtube.com/embed/p365BGJZqjk" title="alanzoka jogando Palworld - Parte #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="w-full md:h-auto" src="https://www.youtube.com/embed/m3GGW8k-ooE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 
@@ -275,15 +275,12 @@
             <!-- Image/Graphic Section -->
             <div class="lg:w-1/2 px-4 flex justify-center">
                 <!-- Replace with actual image -->
-                <video autoplay loop disablepictureinpicture playinline class="rounded-lg shadow-xl w-11/12 md:w-12/12">
-                    <source src="https://cdn.slatpay.com/cdn/5.mp4" type="video/mp4">
-                </video>
+                <img src="/images/gif.gif" class="rounded-lg shadow-xl w-11/12 md:w-12/12">
             </div>
         </div>
         <!-- Video and Button Section -->
         <div class="flex flex-col items-center my-8">
             <div class="w-full max-w-4xl mx-auto px-4 flex flex-col items-center">
-                <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/fg7mp0_N2rg" title="alanzoka jogando Palworld - Parte #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <a href="#plans" class="mt-6 bg-emerald-500 text-2xl hover:bg-emerald-600 font-bold py-4 px-10 md:py-5 md:px-16 rounded transition duration-300 ease-in-out">
                     EXPERIMENTAR AGORA
                 </a>    
@@ -377,7 +374,7 @@
                        </p>
                         <p class="text-4xl font-bold mb-6">R$349,90/<b class="text-blue-400">mês</b></p>
                         <ul class="mb-6">
-                            <li>✔ 1 MÁQUINA </li>
+                            <li>✔ 2 MÁQUINAS </li>
                             <li>✔ SUPORTE 24/7</li>
                             <li>✖ MAQUINA LV. 04</li>
                             <li class="mt-4"><a class="text-blue-400" onclick="toggleModal('modalBear')">Mais detalhes</a></li>
@@ -492,7 +489,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-blue-400 via-gray-500 to-gray-600">Salas de mineração permitem que você crie algo similar a uma POOL de mineração em nosso site, com isso é possível maximizar ainda mais o seu lucro.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <iframe class="w-full h-56"
-                            src="https://www.youtube.com/embed/p365BGJZqjk"
+                            src="https://www.youtube.com/embed/OULKQ-if_FM"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -584,7 +581,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Salas de mineração permitem que você crie algo similar a uma POOL de mineração em nosso site, com isso é possível maximizar ainda mais o seu lucro.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <iframe class="w-full h-56"
-                            src="https://www.youtube.com/embed/p365BGJZqjk"
+                            src="https://www.youtube.com/embed/XmhtUWZcxwo"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -677,7 +674,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-orange-400 via-gray-500 to-gray-600">Salas de mineração permitem que você crie algo similar a uma POOL de mineração em nosso site, com isso é possível maximizar ainda mais o seu lucro.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <iframe class="w-full h-56"
-                            src="https://www.youtube.com/embed/p365BGJZqjk"
+                            src="https://www.youtube.com/embed/A64tHtgLQJQ"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>

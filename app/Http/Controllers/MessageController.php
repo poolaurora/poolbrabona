@@ -39,12 +39,15 @@ class MessageController extends Controller
         $keywords = Keyword::all()->pluck('keyword'); // Assume que você tem um modelo Keyword
         $validatedMsg = $validatedData['message'];
         // Supondo que 'Suggar42' seja um usuário genérico ou assistente.
-        $userSystem = User::where('username', 'Suggar42')->first(); 
+        $userSystem = User::where('username', 'SuporteBot')->first(); 
         foreach ($keywords as $keyword) {
-                if (stripos($validatedData['message'], $keyword) !== false) {
-                    return response()->json([
-                        'success' => false,
-                    ]); 
+            $normalizedMessage = mb_strtolower($this->removeAccents($validatedData['message']), 'UTF-8');
+            $normalizedKeyword = mb_strtolower($this->removeAccents($keyword), 'UTF-8');
+        
+            if (mb_stripos($normalizedMessage, $normalizedKeyword) !== false) {
+                return response()->json([
+                    'success' => false,
+                ]);
             }
         }
         // Cria e salva a mensagem no banco de dados
@@ -63,6 +66,14 @@ class MessageController extends Controller
             'success' => true,
             'message' => $responseMessage !== 'NT' ? 'Resposta enviada.' : 'NT',
         ]);
+    }
+
+    private function removeAccents($string) {
+        return str_replace(
+            ['á', 'é', 'í', 'ó', 'ú', 'â', 'ê', 'î', 'ô', 'û', 'ã', 'õ', 'ç', 'à', 'è', 'ì', 'ò', 'ù', 'ä', 'ë', 'ï', 'ö', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Â', 'Ê', 'Î', 'Ô', 'Û', 'Ã', 'Õ', 'Ç', 'À', 'È', 'Ì', 'Ò', 'Ù', 'Ä', 'Ë', 'Ï', 'Ö', 'Ü'],
+            ['a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'a', 'o', 'c', 'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'A', 'E', 'I', 'O', 'U', 'A', 'O', 'C', 'A', 'E', 'I', 'O', 'U', 'A', 'E', 'I', 'O', 'U'],
+            $string
+        );
     }
 
     private function handleKeywordDetectionAndResponse($user, $validatedMsg)

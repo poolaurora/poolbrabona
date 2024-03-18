@@ -402,7 +402,7 @@
 
                 <li>
                     <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
-                        <div class="@if(request()->routeIs('maquinas.*'))
+                        <div class="@if(request()->routeIs('tutoriais.*'))
                             text-emerald-400
                             @endif">
                             <i class="fa-solid fa-book mr-3 text-xl"></i>
