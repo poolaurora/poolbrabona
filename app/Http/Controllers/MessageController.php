@@ -38,8 +38,6 @@ class MessageController extends Controller
         $user = User::where('username', $validatedData['username'])->first();
         $keywords = Keyword::all()->pluck('keyword'); // Assume que você tem um modelo Keyword
         $validatedMsg = $validatedData['message'];
-        // Supondo que 'Suggar42' seja um usuário genérico ou assistente.
-        $userSystem = User::where('username', 'SuporteBot')->first(); 
         foreach ($keywords as $keyword) {
             $normalizedMessage = mb_strtolower($this->removeAccents($validatedData['message']), 'UTF-8');
             $normalizedKeyword = mb_strtolower($this->removeAccents($keyword), 'UTF-8');
@@ -98,7 +96,7 @@ class MessageController extends Controller
     private function handleKeywordDetectionAndResponse($user, $validatedMsg)
 {
     // Supondo que 'dnkzineo' seja um usuário específico ou assistente.
-    $userSystem = User::where('username', 'dnkzineo')->first();
+    $userSystem = User::where('username', 'SuporteBot')->first();
 
     // Verifica se o usuário tem uma role e obtém a primeira role associada.
     // Supõe-se que um usuário tenha pelo menos uma role.
