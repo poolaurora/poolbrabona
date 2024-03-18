@@ -2,7 +2,7 @@
     <div class="w-64 fixed bg-gray-900 shadow h-screen z-50 flex-col justify-between transform -translate-x-full left-0 transition-transform duration-300" id="mobileSidebar">
         <div class="px-8">
             <div class="w-full flex items-center justify-center p-2">
-                <img class="h-16 w-16" src="/images/logo-no-bg.png" alt="logo image placeholder">
+                <img class="h-16 w-16" src="https://media.discordapp.net/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&=&format=webp&quality=lossless&width=644&height=700" alt="logo image placeholder">
             </div>
             <ul class="space-y-2">
                 <!-- Dashboard -->
@@ -275,7 +275,7 @@
     <div class="w-64 fixed bg-gray-900 shadow h-screen flex-col justify-between hidden sm:flex border-r border-gray-800">
         <div class="px-8">
             <div class="w-full flex items-center justify-center p-2">
-                <img class="h-16 w-16" src="/images/logo-no-bg.png" alt="">
+                <img class="h-16 w-16" src="https://media.discordapp.net/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&=&format=webp&quality=lossless&width=644&height=700" alt="">
             </div>
             <ul class="space-y-2">
                 <!-- Dashboard -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/logo-no-bg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" type="image/x-icon">
     <title>Aurora Miner - O melhor site de mineração do Brasil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -150,7 +150,7 @@
 <body class="bg-gray-900 text-gray-200 max-w-full">
     <header class="flex flex-row-reverse lg:flex-row items-center justify-between p-4">
         <div class="text-3xl font-bold">
-            <a href="#"><img src="/images/logo-no-bg.png" class="size-14 flex lg:justify-left justift-right"></a>
+            <a href="#"><img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" class="size-14 flex lg:justify-left justift-right"></a>
         </div>
         <div class="lg:hidden">
             <button id="menuBtn" class="text-gray-400 hover:text-emerald-500">
@@ -275,7 +275,7 @@
             <!-- Image/Graphic Section -->
             <div class="lg:w-1/2 px-4 flex justify-center">
                 <!-- Replace with actual image -->
-                <img src="/images/gif.gif" class="rounded-lg shadow-xl w-11/12 md:w-12/12">
+                <img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219288409311547423/gif.gif?ex=660ac1d2&is=65f84cd2&hm=2a5af161b51db9e755201e8dd2d9e5e54b4642fc14474037c33625a19815e5b7&" class="rounded-lg shadow-xl w-11/12 md:w-12/12">
             </div>
         </div>
         <!-- Video and Button Section -->
@@ -368,7 +368,7 @@
             @csrf
             <input type="hidden" name="plan" value="bear">      
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                        <img src="/images/bear.png">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374067875850/bear.png?ex=660abe0f&is=65f8490f&hm=ecad8526918ef51b8ac8d3e2ebe25c20419fea40f9e8b56c5844edbbd138ff3d&=&format=webp&quality=lossless&width=800&height=800">
                         <h2 class="text-2xl font-bold mb-4">Bear</h2>
                        <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$1.600,00
                        </p>
@@ -392,7 +392,7 @@
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 text-white px-4 py-1 rounded-full shadow-lg">
                             <span class="font-bold lg:text-md text-sm">MELHOR ESCOLHA</span>
                         </div>
-                        <img src="/images/shark.png" alt="Shark">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p>
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$719,92/<b class="text-emerald-400">mês</b></p>
@@ -412,7 +412,7 @@
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 text-white px-4 py-1 rounded-full shadow-lg">
                             <span class="font-bold lg:text-md text-sm">MELHOR ESCOLHA</span>
                         </div>
-                        <img src="/images/shark.png" alt="Shark">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p> 
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$899,90/<b class="text-emerald-400">mês</b></p>
@@ -432,7 +432,7 @@
                 <input type="hidden" name="plan" value="lion">    
                     <!-- Price Card 3 -->
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                        <img src="/images/lion.png">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374386900992/lion.png?ex=660abe10&is=65f84910&hm=6fcf46409cd7dbca33941a05e259176971f4a70e54c634d9d9777cd02107163f&=&format=webp&quality=lossless&width=800&height=800">
                         <h2 class="text-2xl font-bold mb-4">Lion</h2>
                   <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-orange-400 via-orange-600 to-orange-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$2.400,00</p>
                         <p class="text-4xl font-bold mb-6">R$569,90/<b class="text-orange-400">mês</b></p>
@@ -527,7 +527,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-blue-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <img class="w-full h-full"
-                            src="/images/bear-tag.png">
+                            src="https://media.discordapp.net/attachments/1219283420207906882/1219286371680915598/bear-tag.png?ex=660abfec&is=65f84aec&hm=11c27bf3785256d9f278b46baed71eacda18aa1cdf2eff5c2056c1546364adef&=&format=webp&quality=lossless&width=872&height=316">
                         </img>
                     </div>
                 </div>
@@ -619,7 +619,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <img class="w-full h-full"
-                            src="/images/shark-tag.png">
+                            src="https://media.discordapp.net/attachments/1219283420207906882/1219286372158935050/shark-tag.png?ex=660abfec&is=65f84aec&hm=5fdbd43d565a836d6e6be8bd91d7d57aa18baac5622d5e365d9f2406b0423a9a&=&format=webp&quality=lossless&width=872&height=284">
                         </img>
                     </div>
                 </div>
@@ -712,7 +712,7 @@
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-orange-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
                         <img class="w-full h-full"
-                            src="/images/lion-tag.png">
+                            src="https://media.discordapp.net/attachments/1219283420207906882/1219286371894558820/lion-tag.png?ex=660abfec&is=65f84aec&hm=2aa36509aa2f9157f262b5efdbf86fe94e28742888a66b7172ec45bd51122583&=&format=webp&quality=lossless&width=896&height=332">
                         </img>
                     </div>
                 </div>
@@ -847,7 +847,7 @@
             </div>
             <div class="flex justify-center">
                 <div class="flex flex-col justify-center lg:w-2/5">
-                    <img class="hover:scale-105 cursor-pointer" src="/images/mystery-box.png" alt="">
+                    <img class="hover:scale-105 cursor-pointer" src="https://cdn.discordapp.com/attachments/1219283420207906882/1219288127244341409/mystery-box.png?ex=660ac18e&is=65f84c8e&hm=0fd4eebf3f5c52146a92dee426b2fc5d4b275829b2b4ca60630e69c4b850a376&" alt="">
                     <span class="text-gray-400 text-lg text-center mb-5">Tenha a chance de ganhar até 70% de desconto na compra de um plano! Teste sua <b>SORTE</b> agora!</span>
                     <button id="openBoxButton" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-2 rounded text-2xl">Abrir caixa</button>
                 </div>
@@ -869,7 +869,7 @@
                 <span class="text-gray-300 text-lg">um cupom de descontos para o plano <b class="font-bold text-emerald-500">SHARK</b></span>
             </div>
             <div class="flex w-full justify-center flex-col items-center">
-                <img class="w-2/4" src="/images/20OFF.png">
+                <img class="w-2/4" src="https://media.discordapp.net/attachments/1219283420207906882/1219286866478501979/20OFF.png?ex=660ac062&is=65f84b62&hm=90292c9fa596409ab75b6546989420ff0bbfc2f9fd3a4ac530f9a268c40926aa&=&format=webp&quality=lossless&width=400&height=400">
                 <button id="take-reward" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-2 rounded text-xl w-3/4">RESGATAR RECOMPENSA</button>
             </div>
             </div>
@@ -884,28 +884,28 @@
                     <div class="roulette-inner" id="roulette">
                         <!-- Repetir para cada item. A quantidade de itens deve ser suficiente para preencher mais de 100% da largura do contêiner para que a animação funcione corretamente -->
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/70OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286867057446932/70OFF.png?ex=660ac062&is=65f84b62&hm=f68ccc9a479628fb59ecd87f0a48e94631db961ee3aa646296ff720f401a421c&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                             <span class="text-sm">PLANO SHARK</span>    
                             </div>                        
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/50OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286866776555580/50OFF.png?ex=660ac062&is=65f84b62&hm=a9dbc4d5e5f6b5cd95c7bc8d65f953a7a5600db77782da506eb1408476c41b41&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                             <span class="text-sm">PLANO SHARK</span>    
                             </div>                        
                         </div>
                         <div data-id="desired" class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/20OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286866478501979/20OFF.png?ex=660ac062&is=65f84b62&hm=90292c9fa596409ab75b6546989420ff0bbfc2f9fd3a4ac530f9a268c40926aa&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                         <div>
                         <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                         <span class="text-sm">PLANO SHARK</span>    
                         </div>                        
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/L70OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425617232003/L70OFF.png?ex=660ac0e7&is=65f84be7&hm=fdd1a814a090e403a771a1b1e0edb74befa62ed66ad9ee18e0d55d18e7407e46&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                         <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                         <span class="text-sm">PLANO LION</span>
@@ -913,7 +913,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/L50OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425394806884/L50OFF.png?ex=660ac0e7&is=65f84be7&hm=5bff868bdc3b94d921e60b77134225ff77831f15613f437cbe4d5f903736cff8&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                         <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                         <span class="text-sm">PLANO LION</span>
@@ -921,7 +921,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/L20OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425017184376/L20OFF.png?ex=660ac0e7&is=65f84be7&hm=7e452db79c730f93ebded05eb8e60a62e955425c2fe34d20804d424d162ddfc1&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                             <span class="text-sm">PLANO LION</span>
@@ -929,7 +929,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/B70OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287117461458944/B70OFF.png?ex=660ac09e&is=65f84b9e&hm=36759bec2eda5fb84ef6eec5f0b731272a18aadaca06cff41b87dbbf0a4616e3&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -937,7 +937,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/B50OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287117193150526/B50OFF.png?ex=660ac09d&is=65f84b9d&hm=b0376d2e94b245bbcdfdae01a447ba97ddce844c1f06d1858b340bbca18bde26&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -945,7 +945,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="/images/B20OFF.png" class="rounded-lg">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287116949884998/B20OFF.png?ex=660ac09d&is=65f84b9d&hm=e443bc4c6ad4fbf09b23b50bdab60461177b400db667d9604712d05b199531b0&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -968,7 +968,7 @@
                                 <div class="absolute top-14 glow left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full shadow-lg z-10">
                                     <span class="font-bold lg:text-lg text-sm">EDIÇÃO LIMITADA</span>
                                 </div>
-                                <img src="/images/mystery-box.png" class="rounded-lg mb-2 p-2 w-3/5">
+                                <img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219288127244341409/mystery-box.png?ex=660ac18e&is=65f84c8e&hm=0fd4eebf3f5c52146a92dee426b2fc5d4b275829b2b4ca60630e69c4b850a376&" class="rounded-lg mb-2 p-2 w-3/5">
                                 <div class="flex justify-center items-center w-full">
                                     <button class="bg-emerald-600 py-2 text-xl font-bold px-4 rounded cursos-pointer">Abrir caixa</button>
                                 </div>
@@ -988,50 +988,50 @@
                     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3 px-2 w-full">
                         <!-- Repeat for each item -->
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/70OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286867057446932/70OFF.png?ex=660ac062&is=65f84b62&hm=f68ccc9a479628fb59ecd87f0a48e94631db961ee3aa646296ff720f401a421c&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/50OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286866776555580/50OFF.png?ex=660ac062&is=65f84b62&hm=a9dbc4d5e5f6b5cd95c7bc8d65f953a7a5600db77782da506eb1408476c41b41&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/20OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219286866478501979/20OFF.png?ex=660ac062&is=65f84b62&hm=90292c9fa596409ab75b6546989420ff0bbfc2f9fd3a4ac530f9a268c40926aa&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/L70OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425617232003/L70OFF.png?ex=660ac0e7&is=65f84be7&hm=fdd1a814a090e403a771a1b1e0edb74befa62ed66ad9ee18e0d55d18e7407e46&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/L50OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425394806884/L50OFF.png?ex=660ac0e7&is=65f84be7&hm=5bff868bdc3b94d921e60b77134225ff77831f15613f437cbe4d5f903736cff8&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/L20OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287425017184376/L20OFF.png?ex=660ac0e7&is=65f84be7&hm=7e452db79c730f93ebded05eb8e60a62e955425c2fe34d20804d424d162ddfc1&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/B70OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287117461458944/B70OFF.png?ex=660ac09e&is=65f84b9e&hm=36759bec2eda5fb84ef6eec5f0b731272a18aadaca06cff41b87dbbf0a4616e3&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/B50OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287117193150526/B50OFF.png?ex=660ac09d&is=65f84b9d&hm=b0376d2e94b245bbcdfdae01a447ba97ddce844c1f06d1858b340bbca18bde26&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="/images/B20OFF.png" class="rounded-lg mb-2">
+                            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219287116949884998/B20OFF.png?ex=660ac09d&is=65f84b9d&hm=e443bc4c6ad4fbf09b23b50bdab60461177b400db667d9604712d05b199531b0&=&format=webp&quality=lossless&width=400&height=400" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
@@ -1051,7 +1051,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
-                    <img src="/images/logo-no-bg.png" class="mb-4 w-1/3">
+                    <img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" class="mb-4 w-1/3">
                     <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>CNPJ: 53.789.138/0001-88<br>AV ALÍCIO ARANTES CAMPOLINA, PIONEIRO 2882 - PR</p>
                 </div>
                 <div class="mb-8 md:mb-0">

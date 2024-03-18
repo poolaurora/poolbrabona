@@ -5,7 +5,7 @@
                     class="bg-gray-700 text-white rounded-lg p-4 w-11/12 md:w-6/12 lg:w-4/12 mx-auto fixed z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div class="rounded-lg overflow-hidden mb-4 flex items-center justify-center">
                         <!-- Placeholder for machine image -->
-                        <img class="w-7/12" src="/images/machine.png" alt="Machine image">
+                        <img class="w-7/12" src="https://cdn.discordapp.com/attachments/1219283420207906882/1219291103644225546/machine.png?ex=660ac454&is=65f84f54&hm=c0db258c3867fe1327800778ac2b91ad95f81960267ade467d562029bc6b68ec&" alt="Machine image">
                     </div>
                     <div class="text-center">
                         <h3 class="text-xl font-bold mb-2">Nivel Atual</h3>

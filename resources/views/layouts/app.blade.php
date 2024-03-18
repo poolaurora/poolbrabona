@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-        <link rel="shortcut icon" href="/images/logo-no-bg.png" type="image/x-icon">
+        <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" type="image/x-icon">
         <title>Aurora Miner - O melhor site de mineração do Brasil</title>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11154405887"></script>
         <script>
