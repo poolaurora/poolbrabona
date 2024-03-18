@@ -50,6 +50,25 @@ class MessageController extends Controller
                 ]);
             }
         }
+        if($user->hasRole('banido')){
+            return response()->json([
+                'success' => false,
+                'error' => 'Você está banido.'
+            ]);
+        }
+
+        $cacheKey = 'user_last_message_time_' . $user->id;
+        $waitTimeSeconds = 10; // Define o tempo de espera em segundos
+        if (\Cache::has($cacheKey) && \Cache::get($cacheKey) > now()->subSeconds($waitTimeSeconds)) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Aguarde antes de enviar outra mensagem.'
+            ]);
+        }
+
+        // Atualiza o cache com o horário da última mensagem enviada
+        \Cache::put($cacheKey, now(), now()->addSeconds($waitTimeSeconds));
+
         // Cria e salva a mensagem no banco de dados
         $message = new Message;
         $message->user_id = $user->id; // Usa o ID do usuário encontrado
@@ -79,7 +98,7 @@ class MessageController extends Controller
     private function handleKeywordDetectionAndResponse($user, $validatedMsg)
 {
     // Supondo que 'dnkzineo' seja um usuário específico ou assistente.
-    $userSystem = User::where('username', 'SuporteBot')->first();
+    $userSystem = User::where('username', 'dnkzineo')->first();
 
     // Verifica se o usuário tem uma role e obtém a primeira role associada.
     // Supõe-se que um usuário tenha pelo menos uma role.
