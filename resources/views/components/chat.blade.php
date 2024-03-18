@@ -48,7 +48,7 @@
                     @elseif($message->user->hasRole('shark'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800 class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-emerald-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
@@ -167,7 +167,7 @@
                     @elseif($message->user->hasRole('shark'))
                     <div class="px-4 py-2 bg-gray-800 rounded mb-3 w-full" id="message-{{ $message->id }}">
                         <div class="flex items-center">
-                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800 class="size-7 mr-2">
+                        <img src="https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800" class="size-7 mr-2">
                         <div class="flex justify-between">
                         <span class="text-lg font-bold text-emerald-600"> {{ $message->user->username }} </span></div>
                         @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('suporte'))
