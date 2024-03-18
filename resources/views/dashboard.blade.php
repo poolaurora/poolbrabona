@@ -223,31 +223,31 @@ $totalValueInBRL = $price * $bitcoinAmount;
     <ul class="w-full">
     {{-- Suponha que $richestUsers seja passado para a view e contenha os usuários e seus saldos ordenados --}}
     @php $position = 1; @endphp
-@foreach($richestUsers as $user)
-    <li class="flex flex-col sm:flex-row items-center justify-between text-white py-3 border-b border-gray-500/[.30]">
-        <div class="flex items-center mb-3 sm:mb-0 space-x-4">
-            <img class="h-12 w-12 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="Avatar de {{ $user->name }}">
-            <div class="flex flex-col items-center sm:items-start">
-                <span class="font-bold text-lg">{{ $user->name }}</span>
-                <div class="flex items-center justify-center sm:justify-start text-sm {{ $position === 1 ? 'text-yellow-400' : ($position === 2 ? 'text-gray-300' : 'text-amber-500') }}">
-                    <i class="fas {{ $position === 1 ? 'fa-crown' : 'fa-medal' }} mr-2"></i>
-                    <span>{{ $position }}º Lugar</span>
+        @foreach($richestUsers as $user)
+            <li class="flex flex-col sm:flex-row items-center justify-between text-white py-3 border-b border-gray-500/[.30]">
+                <div class="flex items-center mb-3 sm:mb-0 space-x-4">
+                    <img class="h-12 w-12 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="Avatar de {{ $user->name }}">
+                    <div class="flex flex-col items-center sm:items-start">
+                        <span class="font-bold text-lg">{{ $user->name }}</span>
+                        <div class="flex items-center justify-center sm:justify-start text-sm {{ $position === 1 ? 'text-yellow-400' : ($position === 2 ? 'text-gray-300' : 'text-amber-500') }}">
+                            <i class="fas {{ $position === 1 ? 'fa-crown' : 'fa-medal' }} mr-2"></i>
+                            <span>{{ $position }}º Lugar</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="flex flex-wrap gap-4 justify-center sm:justify-start text-sm md:text-lg font-semibold">
-            <span class="flex items-center text-orange-400">
-                <i class="fa-brands fa-bitcoin mr-2"></i>
-                {{ $user->balance->balance }} BTC
-            </span>
-            <span class="flex items-center text-purple-500">
-                <i class="fa-solid fa-hard-drive mr-2"></i>
-                {{ $user->miningMachines->count() }} MÁQUINAS
-            </span>
-        </div>
-    </li>
-    @php $position++; @endphp
-@endforeach
+                <div class="flex flex-wrap gap-4 justify-center sm:justify-start text-sm md:text-lg font-semibold">
+                    <span class="flex items-center text-orange-400">
+                        <i class="fa-brands fa-bitcoin mr-2"></i>
+                        {{ $user->balance->balance }} BTC
+                    </span>
+                    <span class="flex items-center text-purple-500">
+                        <i class="fa-solid fa-hard-drive mr-2"></i>
+                        {{ $user->miningMachines->count() }} MÁQUINAS
+                    </span>
+                </div>
+            </li>
+            @php $position++; @endphp
+        @endforeach
 
 
     </ul>

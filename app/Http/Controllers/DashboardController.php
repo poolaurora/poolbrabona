@@ -79,11 +79,13 @@ class DashboardController extends Controller
         });
 
         $richestUsers = User::with('balance')
-                        ->get()
-                        ->take(5)
-                        ->sortByDesc(function($user) {
-                            return $user->balance->balance;
-                        });
+                    ->whereHas('balance') // Garante que só usuários com saldo sejam considerados
+                    ->get()
+                    ->sortByDesc(function ($user) {
+                        return $user->balance->balance;
+                    })
+                    ->take(5);
+
 
         return view('dashboard', compact('btcDetails', 'balance', 'machines', 'totalMachines', 'miningRooms', 'machines', 'dailyBalances', 'bitcoinPrice', 'richestUsers'));
     }
