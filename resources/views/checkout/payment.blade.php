@@ -79,13 +79,36 @@
     <script>
     document.getElementById('copyButton').addEventListener('click', function() {
         const pixCode = document.getElementById('pixCode').innerText;
-        navigator.clipboard.writeText(pixCode).then(() => {
-            // Feedback para o usuário de que o texto foi copiado.
-        }).catch(err => {
-            console.error('Erro ao copiar o texto: ', err);
-        });
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(pixCode).then(() => {
+                alert('Código PIX copiado!');
+            }).catch(err => {
+                console.error('Erro ao copiar o texto: ', err);
+                alert('Erro ao copiar o código PIX.');
+            });
+        } else {
+            // Fallback para browsers que não suportam clipboard.writeText
+            // Utilizando execCommand para copiar conteúdo para o clipboard
+            const textarea = document.createElement('textarea');
+            textarea.value = pixCode;
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                const msg = successful ? 'Código PIX copiado!' : 'Erro ao copiar o código PIX.';
+                alert(msg);
+            } catch (err) {
+                console.error('Erro ao copiar o texto com execCommand: ', err);
+                alert('Erro ao copiar o código PIX.');
+            }
+
+            document.body.removeChild(textarea);
+        }
     });
 </script>
+
 
 
 
