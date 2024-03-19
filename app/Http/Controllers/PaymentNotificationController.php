@@ -15,16 +15,16 @@ class PaymentNotificationController extends Controller
         $request->validate([
             'data.id' => 'required|numeric',
         ]);
-        
 
         $client = new \GuzzleHttp\Client();
 
         try {
-            $response = $client->request('GET', 'https://api.mercadopago.com/v1/payments/' . $request->id, [
+            $response = $client->request('GET', 'https://api.mercadopago.com/v1/payments/' . $request->data['id'], [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN')
+                    'Authorization' => 'Bearer APP_USR-6242997096928539-021110-52a0682e37b22b4e338985b11f5375fd-1666009637',
+                    'Content-Type' => 'application/json'
                 ]
-            ]);
+            ]);        
             
             if ($response->getStatusCode() == 200) {
                 $responseBody = json_decode($response->getBody(), true);
