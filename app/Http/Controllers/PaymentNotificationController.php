@@ -12,39 +12,39 @@ class PaymentNotificationController extends Controller
 {
     public function receiveNotification(Request $request)
     {
-        $apiKey = $request->input('apiKey');
-        $transactionId = $request->input('transaction_id');
-        $notificationId = $request->input('notification_id');
-        $yourToken = "IAW0YJ63U2BMGB6B16OJFS9DCZ6ALA366FZ1Z5JANG25";
-
-        $confirmationData = [
-            'token' => $yourToken,
-            'apiKey' => $apiKey,
-            'transaction_id' => $transactionId,
-            'notification_id' => $notificationId,
-        ];
+        $request->validate([
+            'data.id' => 'required|numeric',
+        ]);
+        
 
         $client = new \GuzzleHttp\Client();
 
         try {
-            $response = $client->post('https://pix.paghiper.com/invoice/notification/', [
-                'json' => $confirmationData
+            $response = $client->request('GET', 'https://api.mercadopago.com/v1/payments/' . $request->id, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN')
+                ]
             ]);
-
-            if ($response->getStatusCode() == 201) {
+            
+            if ($response->getStatusCode() == 200) {
                 $responseBody = json_decode($response->getBody(), true);
-
                 // Você deve verificar se o responseBody e as chaves necessárias existem.
-                if (!isset($responseBody['status_request']) || !isset($responseBody['status_request']['order_id'])) {
+                if (!isset($responseBody['status']) || !isset($responseBody['external_reference'])) {
                     return response()->json(['error' => 'Não foi possível encontrar o ID do pedido no payload.'], 400);
                 }
 
-                $transactionId = $responseBody['status_request']['order_id'];
+                $transactionId = $responseBody['external_reference'];
                 $pedido = Payment::where('order_id', $transactionId)->first();
+
+                if ($responseBody['status'] !== 'approved') {
+                    return response()->json(['message' => 'Status não é pago.'], 400);
+                }
 
                 if (!$pedido) {
                     return response()->json(['error' => 'Pedido não encontrado.'], 404);
                 }
+
+
 
                 $description = json_decode($pedido->checkout->description, true);
 

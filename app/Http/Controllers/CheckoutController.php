@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -27,7 +28,6 @@ class CheckoutController extends Controller
     
         // Se há um usuário autenticado e ele tem roles, tenta encontrar um oldCheckout.
         if ($user && !$user->roles->isEmpty()) {
-            // Usa 'first()' ao invés de 'firstOrFail()' para evitar o erro 404 se não encontrar nenhum registro.
             $oldCheckout = Checkout::where('email', $user->email)->where('status', 'paid')->first();
         }
     
@@ -132,31 +132,13 @@ public function processPayment(Request $request)
         'email' => 'required|email',
     ]);
 
-    $apiKey = 'apk_40231996-EnVScRLElxPJowhJIpobCyjLchmrmADq';
     $order_id = uniqid(); 
 
     $checkout = Checkout::where('txId', $request->txId)->firstOrFail();
     $description = json_decode($checkout->description, true);
-    $url = "https://pix.paghiper.com/invoice/create/"; 
+    $url = "https://api.mercadopago.com/v1/payments"; 
 
-    // Verifica se a descrição do plano existe e processa o pagamento do plano.
-    if(isset($description['plan'])) {
-        return $this->processPlanPayment($request, $description['plan'], $apiKey, $order_id, $checkout, $url);
-    }
-    elseif(isset($description['maquinas'])){
-      return $this->processMaquinaPayment($request, $description['maquinas'], $apiKey, $order_id, $checkout, $url);
-    }
-    elseif(isset($description['upgradeMaquinas'])){
-        return $this->processMaquinaUpgradePayment($request, $description['upgradeMaquinas'], $apiKey, $order_id, $checkout, $url);
-      }
-    elseif(isset($description['salaData'])){
-        return $this->processSalaPayment($request, $description['salaData'], $apiKey, $order_id, $checkout, $url);
-      }
-    elseif(isset($description['UpgradePlanData'])){
-        return $this->processUpgradePlanDataPayment($request, $description['UpgradePlanData'], $apiKey, $order_id, $checkout, $url);
-      }
-    
-    
+    return $this->processPaymentData($request, $description, $order_id, $checkout, $url);
 
     // Retorne uma resposta padrão ou lance uma exceção se o plano não for encontrado.
     return response()->json(['error' => 'Informações do plano não encontradas.'], 404);
@@ -167,287 +149,75 @@ public function processPayment(Request $request)
 
 
 
-
-
-
-
-private function processPlanPayment($request, $planDescription, $apiKey, $order_id, $checkout, $url)
+private function processPaymentData($request, $description, $order_id, $checkout, $url)
 {
-    $planValue = $planDescription['value']; 
-    $planValueCents = (int)($planValue * 100);
-
     $client = new \GuzzleHttp\Client();
+
+    if (isset($description['plan'])) {
+        $orderValue = $description['plan']['value'];
+    } elseif (isset($description['maquinas'])) {
+        $orderValue = $description['maquinas']['value'];
+    } elseif (isset($description['upgradeMaquinas'])) {
+        $orderValue = $description['upgradeMaquinas']['value'];
+    } elseif (isset($description['salaData'])) {
+        $orderValue = $description['salaData']['value'];
+    } elseif (isset($description['UpgradePlanData'])) {
+        $orderValue = $description['UpgradePlanData']['value'];
+    } else {
+        return response()->json(['error' => 'erro ao processar descricao'], 500);
+    }
+
+    $nomeCompleto = explode(" ", $request->nome, 2);
+    $primeiroNome = $nomeCompleto[0];
+    $sobrenome = $nomeCompleto[1] ?? '';
+    $ddd = substr(preg_replace('/\D/', '', $request->telefone), 0, 2);
+    $telefone = substr(preg_replace('/\D/', '', $request->telefone), 2);
+
     $data = [
-        'apiKey' => $apiKey,
-        'order_id' => $order_id,
-        'payer_email' => $request->email,
-        'payer_name' => $request->nome,
-        'payer_cpf_cnpj' => $request->cpf,
-        'payer_phone' => $request->telefone,
-        'days_due_date' => 30,
-        'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-        'items' => [
-            [
-                'description' => $planDescription['name'],
-                'quantity' => 1,
-                'item_id' => '1',
-                'price_cents' => $planValueCents,
+        'transaction_amount' => (float)$orderValue,
+        'payment_method_id' => 'pix',
+        'payer' => [
+            'email' => $request->email,
+            'first_name' => $primeiroNome,
+            'last_name' => $sobrenome,
+            'identification' => [
+                'number' => $request->cpf,
+                'type' => 'CPF',
+            ],
+            'phone' => [
+                'area_code' => $ddd,
+                'number' => $telefone,
             ],
         ],
-    ];
+        'notification_url' => env('APP_URL') . '/api/process/webhook/order',
+        'external_reference' => $order_id,
+    ];   
 
     try {
         $response = $client->request('POST', $url, [
-            'json' => $data,
             'headers' => [
-                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),
                 'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
             ],
+            'json' => $data,
         ]);
 
-        if ($response->getStatusCode() == 201) {
             $responseBody = json_decode($response->getBody(), true);
-        
             $payment = new Payment;
-            $payment->order_id = $responseBody['pix_create_request']['order_id'];
-            $payment->status = $responseBody['pix_create_request']['status'];
-            $payment->due_date = $responseBody['pix_create_request']['due_date'];
-            $payment->pix_code_url = $responseBody['pix_create_request']['pix_code']['emv'];
-            $payment->pix_code_base64 = $responseBody['pix_create_request']['pix_code']['qrcode_base64'];
+            $payment->order_id = $responseBody['external_reference'];
+            $payment->status = $responseBody['status'];
+            $payment->due_date = now();
+            $payment->pix_code_url = $responseBody['point_of_interaction']['transaction_data']['qr_code'];
+            $payment->pix_code_base64 = $responseBody['point_of_interaction']['transaction_data']['qr_code_base64'];
             $payment->checkout_id = $checkout->id;
             $payment->save();
         
             return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-        } else {
-            $responseBody = json_decode($response->getBody(), true);
-            return response()->json(['error' => 'Erro ao processar o pagamento.', 'details' => $responseBody], $response->getStatusCode());
-        }
+
     } catch (\Exception $e) {
-        return response()->json(['error' => 'Erro ao se conectar com a API da PagHiper: ' . $e->getMessage()], 500);
+        return response()->json(['error' => 'Erro ao se conectar com a API do Mercado Pago: ' . $e->getMessage()], 500);
     }
 }
-
-
-private function processMaquinaPayment($request, $maquinaDescription, $apiKey, $order_id, $checkout, $url)
-{
-    $maquinaValueCents = (int)($maquinaDescription['value'] * 100);
-
-    $client = new \GuzzleHttp\Client();
-    $data = [
-        'apiKey' => $apiKey,
-        'order_id' => $order_id,
-        'payer_email' => $request->email,
-        'payer_name' => $request->nome,
-        'payer_cpf_cnpj' => $request->cpf,
-        'payer_phone' => $request->telefone,
-        'days_due_date' => 30,
-        'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-        'items' => [
-            [
-                'description' => "Aquisicao de ".$maquinaDescription['qtd']." máquinas",
-                'quantity' => $maquinaDescription['qtd'],
-                'item_id' => '1',
-                'price_cents' => $maquinaValueCents,
-            ],
-        ],
-    ];
-
-    try {
-        $response = $client->request('POST', $url, [
-            'json' => $data,
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ],
-        ]);
-
-        if ($response->getStatusCode() == 201) {
-            $responseBody = json_decode($response->getBody(), true);
-        
-            $payment = new Payment;
-            $payment->order_id = $responseBody['pix_create_request']['order_id'];
-            $payment->status = $responseBody['pix_create_request']['status'];
-            $payment->due_date = $responseBody['pix_create_request']['due_date'];
-            $payment->pix_code_url = $responseBody['pix_create_request']['pix_code']['emv'];
-            $payment->pix_code_base64 = $responseBody['pix_create_request']['pix_code']['qrcode_base64'];
-            $payment->checkout_id = $checkout->id;
-            $payment->save();
-        
-            return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-        } else {
-            $responseBody = json_decode($response->getBody(), true);
-            return response()->json(['error' => 'Erro ao processar o pagamento.', 'details' => $responseBody], $response->getStatusCode());
-        }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao se conectar com a API da PagHiper: ' . $e->getMessage()], 500);
-        }
-}
-
-
-    private function processMaquinaUpgradePayment($request, $maquinaDescription, $apiKey, $order_id, $checkout, $url)
-    {
-        $maquinaValueCents = (int)(250 * 100);
-
-        $client = new \GuzzleHttp\Client();
-        $data = [
-            'apiKey' => $apiKey,
-            'order_id' => $order_id,
-            'payer_email' => $request->email,
-            'payer_name' => $request->nome,
-            'payer_cpf_cnpj' => $request->cpf,
-            'payer_phone' => $request->telefone,
-            'days_due_date' => 30,
-            'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-            'items' => [
-                [
-                    'description' => "Upgrade de máquinas",
-                    'quantity' => 1,
-                    'item_id' => '1',
-                    'price_cents' => $maquinaValueCents,
-                ],
-            ],
-        ];
-
-        try {
-            $response = $client->request('POST', $url, [
-                'json' => $data,
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ],
-            ]);
-
-            if ($response->getStatusCode() == 201) {
-                $responseBody = json_decode($response->getBody(), true);
-            
-                $payment = new Payment;
-                $payment->order_id = $responseBody['pix_create_request']['order_id'];
-                $payment->status = $responseBody['pix_create_request']['status'];
-                $payment->due_date = $responseBody['pix_create_request']['due_date'];
-                $payment->pix_code_url = $responseBody['pix_create_request']['pix_code']['emv'];
-                $payment->pix_code_base64 = $responseBody['pix_create_request']['pix_code']['qrcode_base64'];
-                $payment->checkout_id = $checkout->id;
-                $payment->save();
-            
-                return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-            } else {
-                $responseBody = json_decode($response->getBody(), true);
-                return response()->json(['error' => 'Erro ao processar o pagamento.', 'details' => $responseBody], $response->getStatusCode());
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao se conectar com a API da PagHiper: ' . $e->getMessage()], 500);
-        }
-    }
-
-
-    private function processSalaPayment($request, $salaDescription, $apiKey, $order_id, $checkout, $url)
-    {
-        $salaValueCents = (int)($salaDescription['value'] * 100);
-
-        $client = new \GuzzleHttp\Client();
-        $data = [
-            'apiKey' => $apiKey,
-            'order_id' => $order_id,
-            'payer_email' => $request->email,
-            'payer_name' => $request->nome,
-            'payer_cpf_cnpj' => $request->cpf,
-            'payer_phone' => $request->telefone,
-            'days_due_date' => 30,
-            'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-            'items' => [
-                [
-                    'description' => "Aquisicao de ".$salaDescription['qtd']." sala de mineração",
-                    'quantity' => $salaDescription['qtd'],
-                    'item_id' => '1',
-                    'price_cents' => $salaValueCents,
-                ],
-            ],
-        ];
-
-        try {
-            $response = $client->request('POST', $url, [
-                'json' => $data,
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ],
-            ]);
-
-            if ($response->getStatusCode() == 201) {
-                $responseBody = json_decode($response->getBody(), true);
-            
-                $payment = new Payment;
-                $payment->order_id = $responseBody['pix_create_request']['order_id'];
-                $payment->status = $responseBody['pix_create_request']['status'];
-                $payment->due_date = $responseBody['pix_create_request']['due_date'];
-                $payment->pix_code_url = $responseBody['pix_create_request']['pix_code']['emv'];
-                $payment->pix_code_base64 = $responseBody['pix_create_request']['pix_code']['qrcode_base64'];
-                $payment->checkout_id = $checkout->id;
-                $payment->save();
-            
-                return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-            } else {
-                $responseBody = json_decode($response->getBody(), true);
-                return response()->json(['error' => 'Erro ao processar o pagamento.', 'details' => $responseBody], $response->getStatusCode());
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao se conectar com a API da PagHiper: ' . $e->getMessage()], 500);
-        }
-    }
-
-    private function processUpgradePlanDataPayment($request, $UpgradePlanDataDescription, $apiKey, $order_id, $checkout, $url)
-    {
-        $UpgradePlanDataValueCents = (int)($UpgradePlanDataDescription['value'] * 100);
-
-        $client = new \GuzzleHttp\Client();
-        $data = [
-            'apiKey' => $apiKey,
-            'order_id' => $order_id,
-            'payer_email' => $request->email,
-            'payer_name' => $request->nome,
-            'payer_cpf_cnpj' => $request->cpf,
-            'payer_phone' => $request->telefone,
-            'days_due_date' => 30,
-            'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-            'items' => [
-                [
-                    'description' => "Upgrade de plano de mineração",
-                    'quantity' => $UpgradePlanDataDescription['qtd'],
-                    'item_id' => '1',
-                    'price_cents' => $UpgradePlanDataValueCents,
-                ],
-            ],
-        ];
-
-        try {
-            $response = $client->request('POST', $url, [
-                'json' => $data,
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ],
-            ]);
-
-            if ($response->getStatusCode() == 201) {
-                $responseBody = json_decode($response->getBody(), true);
-            
-                $payment = new Payment;
-                $payment->order_id = $responseBody['pix_create_request']['order_id'];
-                $payment->status = $responseBody['pix_create_request']['status'];
-                $payment->due_date = $responseBody['pix_create_request']['due_date'];
-                $payment->pix_code_url = $responseBody['pix_create_request']['pix_code']['emv'];
-                $payment->pix_code_base64 = $responseBody['pix_create_request']['pix_code']['qrcode_base64'];
-                $payment->checkout_id = $checkout->id;
-                $payment->save();
-            
-                return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-            } else {
-                $responseBody = json_decode($response->getBody(), true);
-                return response()->json(['error' => 'Erro ao processar o pagamento.', 'details' => $responseBody], $response->getStatusCode());
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao se conectar com a API da PagHiper: ' . $e->getMessage()], 500);
-        }
-    }
 }
 

@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@alpinejs/focus": "^3.13.7",
+        "@mercadopago/sdk-js": "github:mercadopago/sdk-js",
         "alpinejs": "^3.13.6",
         "laravel-echo": "^1.16.0",
         "laravel-mix": "^6.0.49",
