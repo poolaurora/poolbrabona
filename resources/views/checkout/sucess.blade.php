@@ -20,19 +20,31 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <div class="container mx-auto px-4 py-8">
-        <div class="max-w-lg mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-            <div class="p-6 w-full text-center">
-                <i class="text-7xl fa-regular fa-circle-check mx-auto mb-4 w-20 h-20 text-emerald-400"></i>
-                <h2 class="text-2xl leading-8 font-semibold text-white">Agradecemos pelo seu pagamento!</h2>
-                <p class="mt-4 text-gray-300">Seu pagamento foi processado com sucesso.</p>
-                <p class="mt-2 text-gray-300">Você receberá em breve um e-mail com os detalhes da sua compra e informações adicionais.</p>
+    <div class="max-w-lg mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <div class="p-6 w-full text-center">
+            <i class="text-7xl fa-regular fa-circle-check mx-auto mb-4 w-20 h-20 text-emerald-400"></i>
+            <h2 class="text-2xl leading-8 font-semibold text-white">Agradecemos pelo seu pagamento!</h2>
+            <p class="mt-4 text-gray-300">Seu pagamento foi processado com sucesso.</p>
+            <p class="mt-2 text-gray-300">Você receberá em breve um e-mail com os detalhes da sua compra e informações adicionais.</p>
 
-                <div class="mt-6">
-                    <a href="/" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Voltar para o Início</a>
+            <!-- Início da seção de detalhes da compra -->
+            <div class="mt-6 px-6 py-4 bg-gray-700 rounded-lg">
+                <h3 class="text-xl text-white font-semibold">Detalhes da Compra</h3>
+                <div class="mt-4 text-left">
+                    <p class="text-gray-300"><strong>Valor: R$250.00</strong></p>
+                    <p class="text-gray-300"><strong>E-mail:</strong> usuario@exemplo.com</p>
+                    <!-- Adicione mais detalhes conforme necessário -->
                 </div>
+            </div>
+            <!-- Fim da seção de detalhes da compra -->
+
+            <div class="mt-6">
+                <a href="/" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Voltar para o Início</a>
             </div>
         </div>
     </div>
+</div>
+
 
 </body>
 </html>
