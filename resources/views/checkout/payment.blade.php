@@ -6,29 +6,18 @@
     <title>Aurora Miner - PIX</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11154405887"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-11154405887');
-
-    gtag('event', 'begin_checkout', {
-        'transaction_id': '{{ $payment->checkout->txId }}',
-        'value': {{
-            isset(json_decode($payment->checkout->description, true)['plan']) ? json_decode($payment->checkout->description, true)['plan']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['maquinas']) ? json_decode($payment->checkout->description, true)['maquinas']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['upgradeMaquinas']) ? json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['salaData']) ? json_decode($payment->checkout->description, true)['salaData']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['UpgradePlanData']) ? json_decode($payment->checkout->description, true)['UpgradePlanData']['value'] :
-            0)))) 
-        }},
-        'currency': 'BRL'
-    });
-</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
+        <!-- End Google Tag Manager -->
 <body class="bg-gray-900 text-gray-100">
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-lg mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="p-6 w-full">

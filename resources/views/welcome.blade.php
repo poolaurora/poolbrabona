@@ -7,14 +7,12 @@
     <title>Aurora Miner - O melhor site de mineração do Brasil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11154405887"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-11154405887');
-    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
+        <!-- End Google Tag Manager -->  
     <style>
         * {
             max-width: 100%;
@@ -148,6 +146,8 @@
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 max-w-full">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="flex flex-row-reverse lg:flex-row items-center justify-between p-4">
         <div class="text-3xl font-bold">
             <a href="#"><img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" class="size-14 flex lg:justify-left justift-right"></a>

@@ -6,30 +6,19 @@
     <title>Agradecimento pelo Pagamento</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11154405887"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-11154405887');
-
-    gtag('event', 'purchase', {
-        'transaction_id': '{{ $payment->checkout->txId }}',
-        'value': {{
-            isset(json_decode($payment->checkout->description, true)['plan']) ? json_decode($payment->checkout->description, true)['plan']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['maquinas']) ? json_decode($payment->checkout->description, true)['maquinas']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['upgradeMaquinas']) ? json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['salaData']) ? json_decode($payment->checkout->description, true)['salaData']['value'] :
-            (isset(json_decode($payment->checkout->description, true)['UpgradePlanData']) ? json_decode($payment->checkout->description, true)['UpgradePlanData']['value'] :
-            0)))) 
-        }},
-        'currency': 'BRL'
-    });
-</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
+        <!-- End Google Tag Manager -->
 </head>
 <body class="bg-gray-900 text-gray-100">
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-lg mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="p-6 w-full text-center">
