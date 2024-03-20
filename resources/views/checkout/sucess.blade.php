@@ -31,8 +31,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mt-6 px-6 py-4 bg-gray-700 rounded-lg">
                 <h3 class="text-xl text-white font-semibold">Detalhes da Compra</h3>
                 <div class="mt-4 text-left">
+                    <div id="valorTotal">
                     <p class="text-gray-300"><strong>Valor: R$250.00</strong></p>
+                    </div>
+                    <div id="email">
                     <p class="text-gray-300"><strong>E-mail:</strong> usuario@exemplo.com</p>
+                    </div>
                     <!-- Adicione mais detalhes conforme necessário -->
                 </div>
             </div>
