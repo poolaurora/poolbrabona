@@ -32,10 +32,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h3 class="text-xl text-white font-semibold">Detalhes da Compra</h3>
                 <div class="mt-4 text-left">
                     <div id="valorTotal">
-                    <p class="text-gray-300"><strong>Valor: R$250.00</strong></p>
+                    <p class="text-gray-300"><strong>Valor: R$
+                    @if(isset(json_decode($payment->checkout->description, true)['plan']))
+                    {{ json_decode($payment->checkout->description, true)['plan']['value'] }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['maquinas']))
+                    {{ json_decode($payment->checkout->description, true)['maquinas']['value'] }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['upgradeMaquinas']))
+                    {{ json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'] }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['salaData']))
+                    {{ json_decode($payment->checkout->description, true)['salaData']['value'] }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['UpgradePlanData']))
+                    {{ json_decode($payment->checkout->description, true)['UpgradePlanData']['value'] }}
+                    @endif
+                </strong></p>
                     </div>
                     <div id="email">
-                    <p class="text-gray-300"><strong>E-mail:</strong> usuario@exemplo.com</p>
+                    <p class="text-gray-300"><strong>E-mail:</strong> {{ $payment->checkout->email }}</p>
                     </div>
                     <!-- Adicione mais detalhes conforme necessário -->
                 </div>
