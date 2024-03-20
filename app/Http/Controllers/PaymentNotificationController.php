@@ -21,7 +21,7 @@ class PaymentNotificationController extends Controller
         try {
             $response = $client->request('GET', 'https://api.mercadopago.com/v1/payments/' . $request->data['id'], [
                 'headers' => [
-                    'Authorization' => 'Bearer APP_USR-6242997096928539-021110-52a0682e37b22b4e338985b11f5375fd-1666009637',
+                    'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),
                     'Content-Type' => 'application/json'
                 ]
             ]);        
@@ -45,6 +45,9 @@ class PaymentNotificationController extends Controller
                 }
 
 
+                $mensagem = "Venda aprovada de R$".$responseBody['transaction_amount']." em ".now()."";
+                $webhookUrl = 'https://discord.com/api/webhooks/1206384069932359740/Nv4K8YMXPkq9pnnM4SusZCm78nbGJvdnsqkWRU5mW6TP-1sHTtaiA_xJeI58Y5p_nna8';
+                $response = Http::post($webhookUrl, ['content' => $mensagem]);
 
                 $description = json_decode($pedido->checkout->description, true);
 

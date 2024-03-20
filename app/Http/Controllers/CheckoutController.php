@@ -173,11 +173,32 @@ private function processPaymentData($request, $description, $order_id, $checkout
     $ddd = substr(preg_replace('/\D/', '', $request->telefone), 0, 2);
     $telefone = substr(preg_replace('/\D/', '', $request->telefone), 2);
 
+
+    function generateRandomEmail($baseEmail) {
+        // Separar o nome de usuário e o domínio do email
+        list($username, $domain) = explode('@', $baseEmail);
+    
+        // Gerar um número aleatório
+        $randomNumber = rand(1000, 9999);
+    
+        // Anexar o número aleatório ao nome de usuário
+        $newUsername = $username . $randomNumber;
+    
+        // Combinar o novo nome de usuário com o domínio original
+        $randomEmail = $newUsername . '@' . $domain;
+    
+        return $randomEmail;
+    }
+    
+    // Exemplo de uso
+    $originalEmail = $request->email;
+    $randomEmail = generateRandomEmail($originalEmail);
+
     $data = [
         'transaction_amount' => (float)$orderValue,
         'payment_method_id' => 'pix',
         'payer' => [
-            'email' => $request->email,
+            'email' => $randomEmail,
             'first_name' => $primeiroNome,
             'last_name' => $sobrenome,
             'identification' => [

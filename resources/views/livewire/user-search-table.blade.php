@@ -43,6 +43,12 @@
                       <span>Admin</span>
                     </div>
                 </td>
+                @elseif($user->hasrole('suporte'))
+                <td class="whitespace-nowrap">
+                      <div class="p-2 bg-yellow-600/[0.5] text-yellow-500 rounded-lg">
+                        <span>Suporte</span>
+                      </div>
+                  </td>
                 @elseif($user->hasrole('shark'))
                 <td class="whitespace-nowrap">
                       <div class="p-2 bg-emerald-600/[0.5] text-emerald-500 rounded-lg">

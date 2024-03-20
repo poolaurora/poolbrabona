@@ -1052,7 +1052,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
                     <img src="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" class="mb-4 w-1/3">
-                    <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>AV ALÍCIO ARANTES CAMPOLINA, PIONEIRO 2882 - PR</p>
+                    <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>53.789.138/0001-88<br>AV ALÍCIO ARANTES CAMPOLINA, PIONEIRO 2882 - PR</p>
                 </div>
                 <div class="mb-8 md:mb-0">
                     <h6 class="font-semibold mb-4">Recursos</h6>
