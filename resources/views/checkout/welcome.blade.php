@@ -30,11 +30,17 @@
         </div>
         
         <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-3 rounded mb-2">
+                {{ session('error') }}
+            </div>
+        @endif
+
             <div class="w-full md:w-1/2 p-8">
                 <h2 class="text-3xl font-extrabold text-white mb-6">Finalize sua compra com segurança</h2>
                 <form action="{{ route('checkout.processPayment') }}" method="POST">
                 @csrf
-                @livewire('checkout-form', ['txId' => $checkout->txId, 'oldCheckout' => $oldCheckout])
+                @livewire('checkout-form', ['txId' => $checkout->txId])
                 <input type="hidden" name="txId" value="{{ $checkout->txId }}">
                 <div class="mt-6 mb-4">
                     <h3 class="text-xl font-semibold text-white mb-4">Opções de Pagamento</h3>

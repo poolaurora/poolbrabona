@@ -15,25 +15,16 @@ class CheckoutForm extends Component
     public $cpf;
     public $telefone;
     public $email;
-    public $oldCheckout;
 
-    public function mount($txId, $oldCheckout)
+    public function mount($txId)
 {
     $this->txId = $txId;
     $checkout = Checkout::where('txId', $this->txId)->first();
-
-    if ($oldCheckout) {
-        $this->nome = $oldCheckout->nome;
-        $this->cpf = $oldCheckout->cpf;
-        $this->telefone = $oldCheckout->telefone;
-        $this->email = $oldCheckout->email;
-    } else {
-        // Simplesmente deixa as propriedades vazias se não encontrar o checkout
-        $this->nome = '';
-        $this->cpf = '';
-        $this->telefone = '';
-        $this->email = '';
-    }
+    // Simplesmente deixa as propriedades vazias se não encontrar o checkout
+    $this->nome = '';
+    $this->cpf = '';
+    $this->telefone = '';
+    $this->email = '';
 }
 
 
