@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('miningrooms:delete-expired')->hourly();
         $schedule->command('balance:update-daily')->everyFifteenMinutes();
         $schedule->command('rooms:delete-expired')->dailyAt('00:00');
+        $schedule->command('email:marketing')->dailyAt('12:00');
     }
 
     /**

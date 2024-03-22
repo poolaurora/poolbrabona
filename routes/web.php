@@ -54,7 +54,7 @@ Route::get('/responsability', function () {
 });
 
 Route::get('/email', function () {
-    return view('emails.purchase');
+    return view('mails.remarketing.one');
 });
 
 Route::get('/cm/{token}', [AccountConfirmationController::class, 'index'])->name('auth.cm');
