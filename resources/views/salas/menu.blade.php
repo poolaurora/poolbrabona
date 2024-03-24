@@ -17,6 +17,10 @@
                         <button type="submit" disabled class="w-full text-white bg-gray-600 focus:ring-4 focus:ring-emerald-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 {{ $isContributor ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $isContributor ? 'disabled' : '' }}>
                             Você precisa de um plano
                         </button>
+                        @elseif($room->capacity <= $room->contributors->count())
+                        <button type="submit" disabled class="w-full text-white bg-gray-600 focus:ring-4 focus:ring-emerald-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 {{ $isContributor ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $isContributor ? 'disabled' : '' }}>
+                            A SALA ESTÁ LOTADA
+                        </button>
                         @else
                         <button type="submit" class="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 {{ $isContributor ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $isContributor ? 'disabled' : '' }}>
                             {{ $isContributor ? 'Já está na Sala' : 'Entrar na Sala' }}

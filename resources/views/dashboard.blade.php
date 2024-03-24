@@ -150,6 +150,10 @@ $totalValueInBRL = $price * $bitcoinAmount;
                 <button disabled type="submit" class="w-full bg-gray-600 text-white py-2 rounded-md font-bold uppercase tracking-wider transition-colors duration-200" {{ $isContributor ? 'disabled' : '' }}>
                     Você precisa de um plano
                 </button>
+                @elseif($room->capacity <= $room->contributors->count())
+                <button disabled type="submit" class="w-full bg-gray-600 text-white py-2 rounded-md font-bold uppercase tracking-wider transition-colors duration-200" {{ $isContributor ? 'disabled' : '' }}>
+                    A SALA ESTÁ LOTADA
+                </button>
                 @else
                 <button type="submit" class="w-full {{ $isContributor ? 'bg-gray-600' : 'bg-emerald-500 hover:bg-emerald-600' }} text-white py-2 rounded-md font-bold uppercase tracking-wider transition-colors duration-200" {{ $isContributor ? 'disabled' : '' }}>
                     {{ $isContributor ? 'Participando' : 'Entrar na sala' }}
@@ -160,11 +164,22 @@ $totalValueInBRL = $price * $bitcoinAmount;
         <div class="p-4 bg-gray-700 rounded-b-lg">
             <h4 class="text-gray-300 text-sm mb-2">Participantes:</h4>
             <div class="flex -space-x-2 overflow-hidden">
-                @forelse ($room->contributors as $participant)
-                <img class="inline-block h-8 w-8 rounded-full border-2 border-gray-700 object-cover" src="{{ $participant->profile_photo_url }}" alt="{{ $participant->name }}" title="{{ $participant->name }}">
-                @empty
+            @php $displayedParticipants = 0; @endphp
+
+            @forelse ($room->contributors as $participant)
+                @if ($displayedParticipants < 5)
+                    <img class="inline-block h-8 w-8 rounded-full border-2 border-gray-700 object-cover" src="{{ $participant->profile_photo_url }}" alt="{{ $participant->name }}" title="{{ $participant->name }}">
+                    @php $displayedParticipants++; @endphp
+                @else
+                    @if ($loop->remaining > 0 && $loop->iteration == 6)
+                        <span class="h-8 w-8 object-cover rounded-full bg-gray-300 border-2 border-gray-500 text-center flex items-center text-white font-bold justify-center bg-gray-900">+</span>
+                    @endif
+                    @break
+                @endif
+            @empty
                 <p class="text-gray-500 text-xs">A Sala está vazia</p>
-                @endforelse
+            @endforelse
+
             </div>
         </div>
     </div>
