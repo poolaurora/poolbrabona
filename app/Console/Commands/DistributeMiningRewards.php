@@ -21,7 +21,7 @@ class DistributeMiningRewards extends Command
         foreach ($rooms as $room) {
             $this->info("Distribuindo recompensas para a sala: {$room->id}");
 
-            $totalMinedValue = $room->total_power * (mt_rand(110, 190) / 700000000);
+            $totalMinedValue = $room->total_power * (mt_rand(110, 190) / 900000000);
             $contributions = $room->userContributions;
 
             foreach ($contributions as $contribution) {
