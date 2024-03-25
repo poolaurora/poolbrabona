@@ -34,15 +34,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div id="valorTotal">
                     <p class="text-gray-300"><strong>Valor: R$
                     @if(isset(json_decode($payment->checkout->description, true)['plan']))
-                    {{ json_decode($payment->checkout->description, true)['plan']['value'] }}
+                        R${{ number_format(json_decode($payment->checkout->description, true)['plan']['value'], 2, '.', '') }}
                     @elseif(isset(json_decode($payment->checkout->description, true)['maquinas']))
-                    {{ json_decode($payment->checkout->description, true)['maquinas']['value'] }}
+                        R${{ number_format(json_decode($payment->checkout->description, true)['maquinas']['value'], 2, '.', '') }}
                     @elseif(isset(json_decode($payment->checkout->description, true)['upgradeMaquinas']))
-                    {{ json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'] }}
+                        R${{ number_format(json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'], 2, '.', '') }}
                     @elseif(isset(json_decode($payment->checkout->description, true)['salaData']))
-                    {{ json_decode($payment->checkout->description, true)['salaData']['value'] }}
+                        R${{ number_format(json_decode($payment->checkout->description, true)['salaData']['value'], 2, '.', '') }}
                     @elseif(isset(json_decode($payment->checkout->description, true)['UpgradePlanData']))
-                    {{ json_decode($payment->checkout->description, true)['UpgradePlanData']['value'] }}
+                        R${{ number_format(json_decode($payment->checkout->description, true)['UpgradePlanData']['value'], 2, '.', '') }}
                     @endif
                 </strong></p>
                     </div>
