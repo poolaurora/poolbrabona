@@ -17,7 +17,7 @@
                             <select id="duration" name="duration" required @change="durationPrice = $event.target.value" class="appearance-none bg-gray-900 relative block w-full px-3 py-2 border border-gray-600 rounded-md text-gray-300 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm">
                                 <option value="" disabled selected>Selecione a duração</option>
                                 <option value="15">15 min</option>
-                                <option value="20">30 min</option>
+                                <option value="30">30 min</option>
                                 <option value="50">1 hora</option>
                                 <option value="100">2 horas</option>
                             </select>
