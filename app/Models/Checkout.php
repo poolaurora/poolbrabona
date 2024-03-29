@@ -41,4 +41,9 @@ class Checkout extends Model
         $validStatuses = ['in_review', 'pending', 'approved', 'refused'];
         return in_array($status, $validStatuses);
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }
