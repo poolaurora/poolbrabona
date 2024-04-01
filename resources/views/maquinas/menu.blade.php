@@ -5,7 +5,7 @@
             @forelse ($machines as $machine)
     <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg my-5" id="machine-{{ $machine->id }}">
         <!-- Image -->
-        <img class="w-full object-cover" src="https://cdn.discordapp.com/attachments/1219283420207906882/1219291103644225546/machine.png?ex=660ac454&is=65f84f54&hm=c0db258c3867fe1327800778ac2b91ad95f81960267ade467d562029bc6b68ec&"
+        <img class="w-full object-cover" src="https://aurora-miner.b-cdn.net/images/machine.webp"
             alt="Imagem ilustrativa da máquina, com aparência de um bloco robusto com símbolos de Bitcoin e tubulações com cores vibrantes em um estilo neon e futurista.">
         <!-- Level and Info -->
         <div class="relative p-4">

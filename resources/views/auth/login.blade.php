@@ -8,7 +8,7 @@
             </div>
         @endif
         <div class="flex items-center justify-center">
-        <img class="size-24" src="https://cdn.discordapp.com/attachments/1219283420207906882/1219283603884871700/logo-no-bg.png?ex=660abd58&is=65f84858&hm=3a6017d376e3dc90b48e9c9bf4315c83d42a5fc1a61b76e744009483733fcab6&" alt="">
+        <img class="size-24" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" alt="">
         </div>    
         <form method="POST" action="{{ route('login') }}">
             @csrf

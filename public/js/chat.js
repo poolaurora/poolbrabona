@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         messageHtml = createMessageHtml('fa-solid fa-shield-halved', 'text-yellow-500', 'text-white font-bold', username, message);
                         break;
                     case 'shark':
-                        messageHtml = createImageMessageHtml('https://media.discordapp.net/attachments/1219283420207906882/1219284374676050081/shark.png?ex=660abe10&is=65f84910&hm=f590036187593da1583f98a5c8e1047a2c6fdde4d929a96443894e1d04aeb139&=&format=webp&quality=lossless&width=800&height=800', 'text-emerald-600', 'text-gray-300', username, message);
+                        messageHtml = createImageMessageHtml('https://aurora-miner.b-cdn.net/images/shark.webp', 'text-emerald-600', 'text-gray-300', username, message);
                         break;
                     case 'lion':
-                        messageHtml = createImageMessageHtml('https://media.discordapp.net/attachments/1219283420207906882/1219284374386900992/lion.png?ex=660abe10&is=65f84910&hm=6fcf46409cd7dbca33941a05e259176971f4a70e54c634d9d9777cd02107163f&=&format=webp&quality=lossless&width=800&height=800', 'text-orange-600', 'text-gray-300', username, message);
+                        messageHtml = createImageMessageHtml('https://aurora-miner.b-cdn.net/images/lion.webp', 'text-orange-600', 'text-gray-300', username, message);
                         break;
                     case 'bear':
-                        messageHtml = createImageMessageHtml('https://media.discordapp.net/attachments/1219283420207906882/1219284374067875850/bear.png?ex=660abe0f&is=65f8490f&hm=ecad8526918ef51b8ac8d3e2ebe25c20419fea40f9e8b56c5844edbbd138ff3d&=&format=webp&quality=lossless&width=800&height=800', 'text-blue-600', 'text-gray-400', username, message);
+                        messageHtml = createImageMessageHtml('https://aurora-miner.b-cdn.net/images/bear.webp', 'text-blue-600', 'text-gray-400', username, message);
                         break;
                     default:
                         messageHtml = createMessageHtml('', 'text-gray-600', 'text-gray-400', username, message, false);

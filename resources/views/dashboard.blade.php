@@ -199,7 +199,7 @@ $totalValueInBRL = $price * $bitcoinAmount;
         <!-- Card 1 -->
         @forelse($machines as $machine)
     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-        <img class="w-full h-30 object-cover" src="https://cdn.discordapp.com/attachments/1219283420207906882/1219291103644225546/machine.png?ex=660ac454&is=65f84f54&hm=c0db258c3867fe1327800778ac2b91ad95f81960267ade467d562029bc6b68ec&" alt="Imagem da máquina">
+        <img class="w-full h-30 object-cover" src="https://aurora-miner.b-cdn.net/images/machine.webp" alt="Imagem da máquina">
         <!-- Card Body -->
         <div class="p-4 bg-black bg-opacity-70">
             <div class="absolute top-0 right-0 pt-2 pr-2">

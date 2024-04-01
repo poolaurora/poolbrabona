@@ -27,7 +27,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="min-h-screen flex flex-col items-center justify-center px-4 mb-6">
         <div class="w-full max-w-4xl mb-6">
             <!-- Banner Principal no Topo -->
-            <img src="https://media.discordapp.net/attachments/1219283420207906882/1219288924946698311/CHECKOUT-BANNER.png?ex=660ac24d&is=65f84d4d&hm=92bdf09775b31e955371fa78849190a5e560dc7de7af77f9dbd41cdf3bbf141e&=&format=webp&quality=lossless&width=2000&height=400" alt="Desfrute de um checkout rápido e seguro" class="rounded-lg">
+            <img src="https://aurora-miner.b-cdn.net/images/CHECKOUT-BANNER.png" alt="Desfrute de um checkout rápido e seguro" class="rounded-lg">
         </div>
         
         <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
@@ -160,8 +160,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
         <div class="flex flex-col md:flex-row items-center mt-2 w-full justify-center mt-4 gap-4">
-            <img class="w-40 bg-transparent" src="https://media.discordapp.net/attachments/1219283420207906882/1219288924657287268/kiwify.png?ex=660ac24c&is=65f84d4c&hm=bdc82a1e6c74f82248a1aa8d438ab992d378695c79c7ddccfaa08bf86543b55f&=&format=webp&quality=lossless&width=1000&height=290" alt="">
-            <img class="w-80 bg-transparent" src="https://media.discordapp.net/attachments/1219283420207906882/1219288924376137758/compra.png?ex=660ac24c&is=65f84d4c&hm=6a7423b4c92df922a69e887c1dfa398387337e227899ff1664f081d0c167148b&=&format=webp&quality=lossless&width=1160&height=174" alt="">
+            <img class="w-40 bg-transparent" src="https://aurora-miner.b-cdn.net/images/kiwify.png" alt="">
+            <img class="w-80 bg-transparent" src="https://aurora-miner.b-cdn.net/images/compra.png" alt="">
         </div>
         
     </div>
