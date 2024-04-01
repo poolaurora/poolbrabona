@@ -56,7 +56,7 @@
     <div style="max-width: 800px; margin: auto; background: #1e293b; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);">
         <!-- Banner Space -->
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="https://media.discordapp.net/attachments/1219283420207906882/1220723329904934973/BANNER-EMAIL.png?ex=660ffa31&is=65fd8531&hm=1a54103a8025bd446c26603f6e4c648ddbb780269bac25ea3643170558a41740&=&format=webp&quality=lossless&width=1100&height=264" style="width: 100%; max-width: 550px; height: auto; border-radius: 8px;">
+            <img src="https://aurora-miner.b-cdn.net/images/BANNER-EMAIL.png" style="width: 100%; max-width: 550px; height: auto; border-radius: 8px;">
         </div>
         <p>Olá, <strong style="color: #00ff9d;">{{ $user->name }}</strong>,</p>
         <p>Agradecemos por se juntar à nossa comunidade! Notamos que você criou uma conta, mas ainda não experimentou nossos planos exclusivos. Estamos aqui para lembrá-lo do mundo de possibilidades que a Aurora Miners pode oferecer.</p>
