@@ -57,8 +57,8 @@ class DashboardController extends Controller
          $price = $btcDetails['price'];
         $bitcoinPrice = floatval(str_replace(',', '.', str_replace('.', '', substr($price, 3))));
 
-         $year = now()->year;
-        $monthOfInterest = 3; // Mês de março
+        $year = now()->year;
+        $monthOfInterest = now()->month;
 
     // Assumindo que $bitcoinPrice é um valor numérico adequado para multiplicação.
     $dailyBalances = $user->dailyBalances()
