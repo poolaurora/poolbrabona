@@ -41,11 +41,12 @@ class MessageController extends Controller
         foreach ($keywords as $keyword) {
             $normalizedMessage = mb_strtolower($this->removeAccents($validatedData['message']), 'UTF-8');
             $normalizedKeyword = mb_strtolower($this->removeAccents($keyword), 'UTF-8');
-        
-            if (mb_stripos($normalizedMessage, $normalizedKeyword) !== false) {
-                return response()->json([
-                    'success' => false,
-                ]);
+            if(!$user->hasRole('admin')){
+                if (mb_stripos($normalizedMessage, $normalizedKeyword) !== false) {
+                    return response()->json([
+                        'success' => false,
+                    ]);
+                }
             }
         }
         if($user->hasRole('banido')){
