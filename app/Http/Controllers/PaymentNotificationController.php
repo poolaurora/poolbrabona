@@ -44,6 +44,10 @@ class PaymentNotificationController extends Controller
                     return response()->json(['error' => 'Pedido não encontrado.'], 404);
                 }
 
+                if($pedido->checkout->status === 'paid'){
+                    return response()->json(['message' => 'Pedido ja pago'], 400);
+                }
+
 
                 $mensagem = "Venda aprovada de R$".$responseBody['transaction_amount']." em ".now()."";
                 $webhookUrl = 'https://discord.com/api/webhooks/1206384069932359740/Nv4K8YMXPkq9pnnM4SusZCm78nbGJvdnsqkWRU5mW6TP-1sHTtaiA_xJeI58Y5p_nna8';

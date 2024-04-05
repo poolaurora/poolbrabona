@@ -1,4 +1,5 @@
 <x-app-layout>
+    @if(isset($pedido->payment))
     <div class="flex flex-col items-center text-center bg-gray-900 min-h-screen p-8">
         <div class="bg-opacity-90 bg-gray-800 rounded-3xl overflow-hidden shadow-xl max-w-5xl w-full p-5">
             <div class="w-full text-gray-300">
@@ -17,7 +18,18 @@
                         </div>
                         <div>
                             <p class="font-semibold">Total do Pedido</p>
-                            <p class="text-xl">R${{ number_format($pedido->total, 2, ',', '.') }}</p>
+                            <p class="text-xl">
+                                @if(isset(json_decode($pedido->description, true)['plan']))
+                                    R${{ number_format(json_decode($pedido->description, true)['plan']['value'], 2, '.', '') }}
+                                @elseif(isset(json_decode($pedido->description, true)['maquinas']))
+                                    R${{ number_format(json_decode($pedido->description, true)['maquinas']['value'], 2, '.', '') }}
+                                @elseif(isset(json_decode($pedido->description, true)['upgradeMaquinas']))
+                                    R${{ number_format(json_decode($pedido->description, true)['upgradeMaquinas']['value'], 2, '.', '') }}
+                                @elseif(isset(json_decode($pedido->description, true)['salaData']))
+                                    R${{ number_format(json_decode($pedido->description, true)['salaData']['value'], 2, '.', '') }}
+                                @elseif(isset(json_decode($pedido->description, true)['UpgradePlanData']))
+                                    R${{ number_format(json_decode($pedido->description, true)['UpgradePlanData']['value'], 2, '.', '') }}
+                                @endif</p>
                         </div>
                     </div>
                 </div>
@@ -144,4 +156,11 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="flex flex-col items-center text-center bg-gray-900 min-h-screen p-8">
+        <div class="text-3xl flex items-center justify-center text-white">
+        <h1> Cliente Ainda não gerou o pedido! </h1>
+        </div>
+    </div>
+    @endif
 </x-app-layout>
