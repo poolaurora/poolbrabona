@@ -68,6 +68,14 @@ class MessageController extends Controller
         // Atualiza o cache com o horário da última mensagem enviada
         \Cache::put($cacheKey, now(), now()->addSeconds($waitTimeSeconds));
 
+
+        if ($this->containsPhoneNumber($validatedData['message'])) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Não é permitido enviar numeros de telefone.'
+            ]);
+        }
+
         // Cria e salva a mensagem no banco de dados
         $message = new Message;
         $message->user_id = $user->id; // Usa o ID do usuário encontrado
@@ -124,7 +132,16 @@ class MessageController extends Controller
     return trim($responseMessage);
 }
 
-    
+
+private function containsPhoneNumber($message)
+{
+    // Esta expressão regular é uma tentativa de capturar vários formatos de números de telefone
+    $phoneRegex = '/\+?[0-9]{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/';
+
+    return (bool) preg_match($phoneRegex, $message);
+}
+
+
     private function prepareContext($userMessage, $userSystem)
     {
         $aiPrompt = AiPrompt::where('desc', 'chatPrompt')->first();
