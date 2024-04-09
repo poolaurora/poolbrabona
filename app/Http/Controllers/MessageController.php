@@ -49,7 +49,7 @@ class MessageController extends Controller
                 }
             }
         }
-        if($user->hasRole('banido')){
+        if($user->hasRole('banido') || $user->hasPermissionTo('banido')){
             return response()->json([
                 'success' => false,
                 'error' => 'Você está banido.'

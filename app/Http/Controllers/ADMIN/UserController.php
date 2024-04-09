@@ -44,11 +44,8 @@ class UserController extends Controller
     public function BanUser($id) {
         $user = User::findOrFail($id);
     
-        // Remove todas as roles existentes
-        $user->roles()->detach();
-    
         // Atribui a role 'banido'
-        $user->assignRole('banido');
+        $user->givePermissionTo('banido');
     
         return back()->with('success', 'Usuário banido com sucesso!');
     }
