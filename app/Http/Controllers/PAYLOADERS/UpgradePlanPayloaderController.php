@@ -64,11 +64,20 @@ class UpgradePlanPayloaderController extends Controller
     
         if($isLion){
             $user->assignRole('shark');
+            for ($i = 0; $i < 4; $i++) {
+                $user->miningMachines()->create([
+                    'level' => 3,
+                ]);
+            }
         }
         elseif($isBear){
             $user->assignRole('lion');
+            for ($i = 0; $i < 3; $i++) {
+                $user->miningMachines()->create([
+                    'level' => 2,
+                ]);
+            }
         } else {
-            // Considerando lançar uma exceção ou manipular o erro adequadamente
             throw new \Exception('Plano não encontrado');
         }
     }    
