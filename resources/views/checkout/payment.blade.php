@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<?php
+    $email = $payment->checkout->email;
+    $email_hash = hash('sha256', strtolower(trim($email)));
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurora Miner - PIX</title>
@@ -13,6 +17,48 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
         <!-- End Google Tag Manager -->
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '739262591656106');
+            fbq('track', 'PageView');
+            // Disparar evento de purchase
+            fbq('track', 'InitiateCheckout', {
+            value: @if(isset(json_decode($payment->checkout->description, true)['plan']))
+                        {{ number_format(json_decode($payment->checkout->description, true)['plan']['value'], 2, '.', '') }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['maquinas']))
+                        {{ number_format(json_decode($payment->checkout->description, true)['maquinas']['value'], 2, '.', '') }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['upgradeMaquinas']))
+                        {{ number_format(json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'], 2, '.', '') }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['salaData']))
+                        {{ number_format(json_decode($payment->checkout->description, true)['salaData']['value'], 2, '.', '') }}
+                    @elseif(isset(json_decode($payment->checkout->description, true)['UpgradePlanData']))
+                        {{ number_format(json_decode($payment->checkout->description, true)['UpgradePlanData']['value'], 2, '.', '') }}
+                    @endif,
+            currency: 'BRL',
+            contents: [
+                {
+                id: '{{ $payment->checkout->id }}',
+                quantity: 1
+                }
+            ],
+            content_type: 'product',
+            user_data: {
+                em: '{{ $email_hash }}' // Substitua 'email_do_usuario_criptografado' pelo e-mail do usuário criptografado em base64
+            }
+            });
+            </script>
+            <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=739262591656106&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Meta Pixel Code -->
 <body class="bg-gray-900 text-gray-100">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
