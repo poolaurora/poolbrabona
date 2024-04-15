@@ -17,10 +17,10 @@ class AccountController extends Controller
     public function create(Request $request)
 {
     $request->validate([
-        'email' => 'required|email|unique:users,email',
-        'name' => 'required|string|max:255',
+        'name' => ['required', 'string', 'max:255'],
+        'username' => ['required', 'string', 'min:8', 'max:255', 'unique:users', 'not_regex:/^\+?[1-9]\d{1,14}$/', 'not_regex:/^\S+@\S+\.\S+$/'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => 'required|string|min:8|unique:users',
-        'username' => 'required|string|min:8|max:20|unique:users'
     ]);
 
     $user = User::create([
