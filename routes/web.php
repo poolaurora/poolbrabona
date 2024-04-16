@@ -14,7 +14,7 @@ use App\Http\Controllers\ADMIN\MaquinasController;
 use App\Http\Controllers\ADMIN\SaquesController;
 use App\Http\Controllers\ADMIN\ChatController;
 use App\Http\Controllers\ADMIN\PedidosController;
-
+use App\Http\Controllers\ADMIN\SessionsController;
 
 //CHECKOUT
 use App\Http\Controllers\CheckoutController;
@@ -146,6 +146,8 @@ Route::middleware([
 
             Route::get('/pedidos', [PedidosController::class, 'index'])->name('admin.pedidos');
             Route::get('/pedidos/moreinfo/{id}', [PedidosController::class, 'moreinfo'])->name('admin.pedidos.info');
+
+            Route::get('/sessions', [SessionsController::class, 'index'])->name('admin.sessions');
 
         });
 

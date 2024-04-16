@@ -191,7 +191,12 @@
                             @if(request()->routeIs('admin.pedidos'))
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
-                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Pedidos</a></li>     
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Pedidos</a></li>
+                        <li><a href="{{ route('admin.sessions') }}" class="
+                            @if(request()->routeIs('admin.sessions'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Sessions</a></li>          
                         <!-- Additional options can be added here -->
                     
                     
@@ -470,6 +475,11 @@
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
                         text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Pedidos</a></li> 
+                        <li><a href="{{ route('admin.sessions') }}" class="
+                            @if(request()->routeIs('admin.sessions'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Sessions</a></li>          
                         <!-- Additional options can be added here -->
                     
                     
