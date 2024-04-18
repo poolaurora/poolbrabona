@@ -99,7 +99,7 @@
                             <li class="p-3 rounded-lg flex items-center justify-between"
                                 style="background-image: linear-gradient(to right, #0fa535, #e4ba00);">
                                 <span class="text-white text-md">Aumento do Hashrate para <span
-                                        class="font-bold text-lg">400 TH/s</span> diários.</span>
+                                        class="font-bold text-lg">900 TH/s</span> diários.</span>
                                 <i class="fas fa-angles-up text-white font-bold px-4"></i>
                             </li>
 
