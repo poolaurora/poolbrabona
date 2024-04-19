@@ -88,11 +88,22 @@
                               <div class="flex justify-between items-center">
                                   <div>
                                       <p class="font-bold text-gray-300">Dia de Compra</p>
-                                      <p class="text-lg text-gray-400">21 de Março</p>
+                                      <p class="text-lg text-gray-400">
+                                        @if($pedido)
+                                        {{ $pedido->created_at->format('d/m/Y') }}
+                                        @else
+                                        Usuário não efetuou uma compra ainda
+                                        @endif
+                                    </p>
                                   </div>
                                   <div>
                                       <p class="font-bold text-gray-300">Dia para ser bloqueado:</p>
-                                      <p class="text-lg text-gray-400">21 de Março</p>
+                                      <p class="text-lg text-gray-400">
+                                        @if($pedido)
+                                        {{ $pedido->created_at->addDays(15)->format('d/m/Y') }}
+                                        @else
+                                        Usuário não efetuou uma compra ainda
+                                        @endif</p>
                                   </div>
                               </div>
                           </div>

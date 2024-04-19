@@ -9,6 +9,8 @@ use App\Services\CryptoCurrencyService;
 use App\Models\MiningMachine;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use App\Models\Checkout;
+use App\Models\Payment;
 
 
 class UserController extends Controller
@@ -38,7 +40,12 @@ class UserController extends Controller
         // Conta o número total de máquinas. Não é necessário usar sum() a menos que esteja somando um valor específico.
         $totalMachines = $machines->count();
 
-        return view('admin.moreinfo', compact('user', 'btcDetails', 'totalMachines'));
+        $pedido = Checkout::where('email', $user->email)
+        ->where('status', 'paid')
+        ->orderBy('created_at', 'asc') // 'asc' para obter o mais antigo
+        ->first(); // Retorna o primeiro registro encontrado
+
+        return view('admin.moreinfo', compact('user', 'btcDetails', 'totalMachines', 'pedido'));
     }
 
     public function BanUser($id) {
