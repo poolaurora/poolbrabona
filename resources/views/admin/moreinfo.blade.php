@@ -106,6 +106,17 @@
                                         @endif</p>
                                   </div>
                               </div>
+                            @if($pedido)
+                                <div class="rounded-xl bg-gray-800 p-6 mt-4 shadow-inner">
+                                    <h4 class="text-xl font-bold mb-4 text-gray-500">Informações do Pagador</h4>
+                                    <div class="text-left text-gray-400">
+                                        <p class="font-semibold">Nome: {{ $pedido->nome }}</p>
+                                        <p class="font-semibold">CPF/CNPJ: {{ $pedido->cpf }}</p>
+                                        <p class="font-semibold">E-mail: {{ $pedido->email }}</p>
+                                        <p class="font-semibold">Telefone: {{ $pedido->telefone }}</p>
+                                    </div>
+                                </div>
+                            @endif
                           </div>
                     </div>
                 </div>
