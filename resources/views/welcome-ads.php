@@ -6,6 +6,23 @@
     <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
     <title>Aurora Miner - Blog sobre Criptomoedas</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '406273602349612');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=406273602349612&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
 </head>
 <body class="bg-gray-900 text-gray-200 max-w-full font-sans">
 
