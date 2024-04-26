@@ -51,7 +51,7 @@
             ],
             content_type: 'product',
             user_data: {
-                em: '{{ $email_hash }}' // Substitua 'email_do_usuario_criptografado' pelo e-mail do usuário criptografado em base64
+                em: '{{ $email_hash }}'
             }
             });
             </script>

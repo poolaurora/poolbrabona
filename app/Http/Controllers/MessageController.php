@@ -38,14 +38,15 @@ class MessageController extends Controller
         $user = User::where('username', $validatedData['username'])->first();
         $keywords = Keyword::all()->pluck('keyword'); // Assume que você tem um modelo Keyword
         $validatedMsg = $validatedData['message'];
+
+        // Normalizar a mensagem uma única vez fora do loop
+        $normalizedMessage = mb_strtolower($this->removeAccents($validatedMsg), 'UTF-8');
+
         foreach ($keywords as $keyword) {
-            $normalizedMessage = mb_strtolower($this->removeAccents($validatedData['message']), 'UTF-8');
             $normalizedKeyword = mb_strtolower($this->removeAccents($keyword), 'UTF-8');
-            if(!$user->hasRole('admin')){
+            if (!$user->hasRole('admin')) {
                 if (mb_stripos($normalizedMessage, $normalizedKeyword) !== false) {
-                    return response()->json([
-                        'success' => false,
-                    ]);
+                    return response()->json(['success' => false, 'error' => 'Mensagem contém palavras proibidas']);
                 }
             }
         }
