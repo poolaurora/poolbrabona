@@ -79,18 +79,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         @if(auth()->user()->hasRole('banido') || auth()->user()->hasPermissionTo('banido'))
-            <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-gray-950 bg-opacity-95 z-50"></div>
-                <section class="fixed z-50 top-0 left-0 w-full h-full flex justify-center items-center">
-                 <div class="lg:w-1/4 w-full h-3/5 bg-gray-700 rounded-lg overflow-auto flex flex-col items-center justify-center text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="flex text-center bg-red-500 rounded-full w-24 h-24 justify-center items-center">
-                            <h1 class="text-7xl text-white font-bold">!</h1>
-                        </div>
-                        <h1 class="text-3xl text-white font-bold p-2">Você está banido!</h1>
-                        <span class="text-lg text-gray-300">Para entender motivos e recursos a serem tomados contate <b>noreply@auroraminer.com</b></span>
-                    </div>
-                 </div>
-                </section>   
+            <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-gray-950 bg-opacity-80 z-50"></div>
             @endif
 
 
