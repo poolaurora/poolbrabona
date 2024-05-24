@@ -79,7 +79,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         @if(auth()->user()->hasRole('banido') || auth()->user()->hasPermissionTo('banido'))
-            <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-gray-950 bg-opacity-80 z-50"></div>
+            <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-opacity-80 z-50"></div>
             @endif
 
 
