@@ -12,6 +12,7 @@ use Illuminate\Http\Response;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Ramsey\Uuid\Uuid;
 
 class CheckoutController extends Controller
 {
@@ -151,6 +152,9 @@ public function processPayment(Request $request)
 
 private function processPaymentData($request, $description, $order_id, $checkout, $url)
 {
+
+    $idempotencyKey = Uuid::uuid4()->toString();
+
     $client = new \GuzzleHttp\Client();
 
     if (isset($description['plan'])) {
@@ -218,7 +222,7 @@ private function processPaymentData($request, $description, $order_id, $checkout
         $response = $client->request('POST', $url, [
             'headers' => [
                 'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),
-                'X-Idempotency-Key' => '0d5020ed-1af6-469c-ae06-c3bec19954bb',
+                'X-Idempotency-Key' => $idempotencyKey,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ],
