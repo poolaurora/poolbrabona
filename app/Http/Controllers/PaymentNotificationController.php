@@ -11,32 +11,17 @@ use Illuminate\Support\Facades\Http;
 class PaymentNotificationController extends Controller
 {
     public function receiveNotification(Request $request)
-    {
-        $request->validate([
-            'data.id' => 'required|numeric',
-        ]);
-
-        $client = new \GuzzleHttp\Client();
-
-        try {
-            $response = $client->request('GET', 'https://api.mercadopago.com/v1/payments/' . $request->data['id'], [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),
-                    'Content-Type' => 'application/json'
-                ]
-            ]);        
-            
-            if ($response->getStatusCode() == 200) {
-                $responseBody = json_decode($response->getBody(), true);
+    {       
+            $responseBody = $request->all();
                 // Você deve verificar se o responseBody e as chaves necessárias existem.
-                if (!isset($responseBody['status']) || !isset($responseBody['external_reference'])) {
+                if (!isset($responseBody['data']['status']) || !isset($responseBody['data']['code'])) {
                     return response()->json(['error' => 'Não foi possível encontrar o ID do pedido no payload.'], 400);
                 }
 
-                $transactionId = $responseBody['external_reference'];
+                $transactionId = $responseBody['data']['code'];
                 $pedido = Payment::where('order_id', $transactionId)->first();
 
-                if ($responseBody['status'] !== 'approved') {
+                if ($responseBody['data']['status'] !== 'PAID') {
                     return response()->json(['message' => 'Status não é pago.'], 400);
                 }
 
@@ -48,9 +33,15 @@ class PaymentNotificationController extends Controller
                     return response()->json(['message' => 'Pedido ja pago'], 400);
                 }
 
+                $amountInCents = $responseBody['data']['amount'];
+                $amountInReais = $amountInCents / 100;
 
-                $mensagem = "Venda aprovada de R$".$responseBody['transaction_amount']." em ".now()."";
-                $webhookUrl = 'https://discord.com/api/webhooks/1206384069932359740/Nv4K8YMXPkq9pnnM4SusZCm78nbGJvdnsqkWRU5mW6TP-1sHTtaiA_xJeI58Y5p_nna8';
+                // Formatar o valor para reais com 2 casas decimais, usando vírgula como separador decimal e ponto como separador de milhar
+                $formattedAmount = number_format($amountInReais, 2, ',', '.');
+
+
+                $mensagem = "Venda aprovada de $formattedAmount em ".now()."";
+                $webhookUrl = 'https://discord.com/api/webhooks/1248991558103994428/zPO4xgeU0p60hwrMGfGePHoIsJP2KpgnAj2y1-tINFMXpK1IgCpiqY6151ArFVc05cJE';
                 $response = Http::post($webhookUrl, ['content' => $mensagem]);
 
                 $description = json_decode($pedido->checkout->description, true);
@@ -77,24 +68,5 @@ class PaymentNotificationController extends Controller
                 
                 // Retorna a resposta recebida do controller destinatário
                 return $response;
-
-
-            } else {
-                // Captura o corpo da resposta da PagHiper.
-                $errorResponseBody = $response->getBody()->getContents();
-                
-                // Tenta decodificar o corpo da resposta. Se não for possível, usa o corpo inteiro.
-                $errorResponse = json_decode($errorResponseBody, true);
-                
-                // Verifica se há uma mensagem de erro no JSON decodificado. Se não, usa o corpo da resposta.
-                $errorMessage = $errorResponse['message'] ?? 'Erro desconhecido: ' . $errorResponseBody;
-                
-                return response()->json(['error' => $errorMessage], $response->getStatusCode());
-            }
-            
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao enviar confirmação: ' . $e->getMessage()], 500);
-        }
     }
 }
-

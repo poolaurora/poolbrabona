@@ -1,5 +1,5 @@
 <div class="lg:hidden">
-    <div class="w-64 fixed bg-gray-900 shadow h-screen z-50 flex-col justify-between transform -translate-x-full left-0 transition-transform duration-300" id="mobileSidebar">
+    <div class="w-64 overflow-y-auto fixed bg-gray-900 shadow h-screen z-50 flex-col justify-between transform -translate-x-full left-0 transition-transform duration-300" id="mobileSidebar">
         <div class="px-8">
             <div class="w-full flex items-center justify-center p-2">
                 <img class="h-16 w-16" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" alt="logo image placeholder">
@@ -127,6 +127,7 @@
                     </ul>
                 </li>
 
+                
                 <li>
                     <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
                         <div class="@if(request()->routeIs('maquinas.*'))
@@ -144,6 +145,47 @@
                             text-white bg-gray-300/[.06] border-emerald-500 border-l-4
                             @endif    
                         text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Ver tutoriais</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
+                        <div
+                        class="
+                        @if(request()->routeIs('afiliacao.*'))
+                            text-emerald-400
+                            @endif">
+                            <i class="fa-solid fa-users mr-3 text-xl"></i>
+                            <span class="text-lg">Afiliação</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-gray-600"></i>
+                    </button>
+                    <!-- Submenu, hidden by default -->
+                    <ul class="hidden pl-2 w-full mt-2">
+
+                        @if(auth()->user()->roles->isEmpty())
+                        <li class="flex gap-2 items-center"><i class="fa-solid fa-lock text-gray-600 cursor-not-allowed	"></i><a disabled href="#" class="cursor-not-allowed text-gray-600 block px-5 py-3 rounded-md">Instruções</a></li>
+                        @else
+                        <li><a href="{{ route('afiliacao.index') }}" class="
+                            @if(request()->routeIs('afiliacao.index'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Instruções</a></li>
+                        @endif
+
+                        @if(auth()->user()->roles->isEmpty())
+                        <li class="flex gap-2 items-center"><i class="fa-solid fa-lock text-gray-600 cursor-not-allowed	"></i><a disabled href="#" class="cursor-not-allowed text-gray-600 block px-5 py-3 rounded-md">Bonus</a></li>
+                        @else
+                        <li><a href="{{ route('afiliacao.bonus') }}" class="
+                            @if(request()->routeIs('afiliacao.bonus'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Bonus</a></li>
+                        @endif
+                        
+                        <!-- Additional options can be added here -->
+                    
+                    
                     </ul>
                 </li>
 
@@ -187,6 +229,11 @@
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
                         text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Chat</a></li>
+                        <li><a href="{{ route('admin.onlines') }}" class="
+                            @if(request()->routeIs('admin.onlines'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Onlines</a></li> 
                         <li><a href="{{ route('admin.pedidos') }}" class="
                             @if(request()->routeIs('admin.pedidos'))
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
@@ -197,6 +244,11 @@
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
                         text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Sessions</a></li>          
+                        <li><a href="{{ route('admin.pixel') }}" class="
+                            @if(request()->routeIs('admin.pixel'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Pixel</a></li> 
                         <!-- Additional options can be added here -->
                     
                     
@@ -281,8 +333,8 @@
 
 
 <!-- DESKTOP SIDEBAR -->
-<div class="md:hidden lg:flex">
-    <div class="w-64 fixed bg-gray-900 shadow h-screen flex-col justify-between hidden sm:flex border-r border-gray-800">
+<div class="md:hidden lg:flex z-50">
+    <div class="w-64 overflow-y-auto fixed bg-gray-900 shadow h-screen flex-col justify-between hidden sm:flex border-r border-gray-800">
         <div class="px-8">
             <div class="w-full flex items-center justify-center p-2">
                 <img class="h-16 w-16" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" alt="">
@@ -430,6 +482,47 @@
                     </ul>
                 </li>
 
+                <li>
+                    <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
+                        <div
+                        class="
+                        @if(request()->routeIs('afiliacao.*'))
+                            text-emerald-400
+                            @endif">
+                            <i class="fa-solid fa-users mr-3 text-xl"></i>
+                            <span class="text-lg">Afiliação</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-gray-600"></i>
+                    </button>
+                    <!-- Submenu, hidden by default -->
+                    <ul class="hidden pl-2 w-full mt-2">
+
+                    @if(auth()->user()->roles->isEmpty())
+                        <li class="flex gap-2 items-center"><i class="fa-solid fa-lock text-gray-600 cursor-not-allowed	"></i><a disabled href="#" class="cursor-not-allowed text-gray-600 block px-5 py-3 rounded-md">Instruções</a></li>
+                        @else
+                        <li><a href="{{ route('afiliacao.index') }}" class="
+                            @if(request()->routeIs('afiliacao.index'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Instruções</a></li>
+                        @endif
+
+                        @if(auth()->user()->roles->isEmpty())
+                        <li class="flex gap-2 items-center"><i class="fa-solid fa-lock text-gray-600 cursor-not-allowed	"></i><a disabled href="#" class="cursor-not-allowed text-gray-600 block px-5 py-3 rounded-md">Bonus</a></li>
+                        @else
+                        <li><a href="{{ route('afiliacao.bonus') }}" class="
+                            @if(request()->routeIs('afiliacao.bonus'))
+                            text-white bg-gray-300/[.06] border-emerald-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-emerald-500 hover:border-l-4 rounded-md">Bonus</a></li>
+                        @endif
+                    
+                        <!-- Additional options can be added here -->
+                    
+                    
+                    </ul>
+                </li>
+
                 @role('admin')
                 <li>
                     <button class="flex items-center justify-between p-2 w-full text-base font-normal text-gray-300 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white " onclick="toggleSubMenu(event)">
@@ -470,6 +563,11 @@
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
                         text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Chat</a></li>    
+                        <li><a href="{{ route('admin.onlines') }}" class="
+                            @if(request()->routeIs('admin.onlines'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Onlines</a></li> 
                         <li><a href="{{ route('admin.pedidos') }}" class="
                             @if(request()->routeIs('admin.pedidos'))
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
@@ -479,7 +577,12 @@
                             @if(request()->routeIs('admin.sessions'))
                             text-white bg-gray-300/[.06] border-red-500 border-l-4
                             @endif    
-                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Sessions</a></li>          
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Sessions</a></li>
+                        <li><a href="{{ route('admin.pixel') }}" class="
+                            @if(request()->routeIs('admin.pixel'))
+                            text-white bg-gray-300/[.06] border-red-500 border-l-4
+                            @endif    
+                        text-gray-300 hover:text-white block px-5 py-3 hover:bg-gray-300/[.06] hover:border-red-500 hover:border-l-4 rounded-md">Pixel</a></li>            
                         <!-- Additional options can be added here -->
                     
                     
@@ -490,6 +593,7 @@
                 <!-- ... -->
             </ul>
         </div>
+        <div class="p-4"></div>
         <div class="px-8 border-t border-gray-700">
               <div class="flex items-center justify-between pt-6">
                   <div class="flex items-center">

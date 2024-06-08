@@ -23,11 +23,11 @@ class PlanPayloaderController extends Controller
     {
         $payload = $request->json()->all();
 
-        if ($payload['status'] !== 'approved') {
+        if ($payload['data']['status'] !== 'PAID') {
             return response()->json(['message' => 'Status não é pago.'], 400);
         }
 
-        $transactionId = $payload['external_reference'];
+        $transactionId = $payload['data']['code'];
         $pedido = Payment::where('order_id', $transactionId)->first();
 
         if (!$pedido) {

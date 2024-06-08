@@ -7,6 +7,7 @@
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <title>Aurora Miner - PIX</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -17,6 +18,7 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
         <!-- End Google Tag Manager -->
+        @foreach($pixels as $pixel)
         <!-- Meta Pixel Code -->
         <script>
             !function(f,b,e,v,n,t,s)
@@ -27,7 +29,7 @@
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1150226172846622');
+            fbq('init', '{{ $pixel->pixel_id }}');
             fbq('track', 'PageView');
             // Disparar evento de purchase
             fbq('track', 'InitiateCheckout', {
@@ -56,9 +58,10 @@
             });
             </script>
             <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1150226172846622&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id={{ $pixel->pixel_id }}&ev=PageView&noscript=1"
             /></noscript>
         <!-- End Meta Pixel Code -->
+        @endforeach
 <body class="bg-gray-900 text-gray-100">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
@@ -94,7 +97,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="mt-6 text-gray-300">Você também pode tentar lendo o nosso QRCode:</p>
                 <div class="mt-2 flex justify-center">
                     <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-                        <img class="max-w-full h-auto" src="data:image/png;base64, {{ $payment->pix_code_base64 }}"  alt="QR Code" />
+                        <div id="qrcode"></div>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -145,6 +148,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 
+<script>
+  var QR_CODE = new QRCode("qrcode", {
+    width: 220,
+    height: 220,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.L, // Use um nível de correção de erros menor
+});
+
+  QR_CODE.makeCode("{{ $payment->pix_code_url }}")
+</script>
 
 
 <script>

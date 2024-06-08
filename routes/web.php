@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WithdrawalController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\SalasController;
+use App\Http\Controllers\AfiliadosController;
+use App\Http\Controllers\PixelController;
 
 //ADMIN
 use App\Http\Controllers\ADMIN\UserController;
@@ -116,6 +118,13 @@ Route::middleware([
 
         });
 
+        Route::group(['prefix' => 'afiliacao'], function () {
+            Route::get('/instrucao', [AfiliadosController::class, 'index'])->name('afiliacao.index');
+            Route::post('/join', [AfiliadosController::class, 'turnAfiliatte'])->name('afiliacao.join');
+            Route::get('/bonus', [AfiliadosController::class, 'bonus'])->name('afiliacao.bonus');
+
+        });
+
         Route::group(['prefix' => 'me'], function () {
             Route::get('/extrato', [DashboardController::class, 'Extrato'])->name('me.extrato');
             Route::get('/profile', [DashboardController::class, 'Profile'])->name('me.profile');
@@ -148,6 +157,13 @@ Route::middleware([
             Route::get('/pedidos/moreinfo/{id}', [PedidosController::class, 'moreinfo'])->name('admin.pedidos.info');
 
             Route::get('/sessions', [SessionsController::class, 'index'])->name('admin.sessions');
+
+            Route::get('/pixel', [PixelController::class, 'index'])->name('admin.pixel');
+            Route::post('/pixel/store', [PixelController::class, 'store'])->name('pixel.store');
+            Route::delete('/pixel/{pixel}', [PixelController::class, 'destroy'])->name('pixel.destroy');
+
+
+            Route::get('/onlines', [SessionsController::class, 'indexOnlines'])->name('admin.onlines');
 
         });
 

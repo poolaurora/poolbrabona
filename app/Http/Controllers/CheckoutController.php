@@ -13,6 +13,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
 {
@@ -137,17 +138,13 @@ public function processPayment(Request $request)
 
     $checkout = Checkout::where('txId', $request->txId)->firstOrFail();
     $description = json_decode($checkout->description, true);
-    $url = "https://api.mercadopago.com/v1/payments"; 
+    $url = "https://api.sqala.tech/core/v1/pix-qrcode-payments"; 
 
     return $this->processPaymentData($request, $description, $order_id, $checkout, $url);
 
     // Retorne uma resposta padrão ou lance uma exceção se o plano não for encontrado.
     return response()->json(['error' => 'Informações do plano não encontradas.'], 404);
 }
-
-
-
-
 
 
 private function processPaymentData($request, $description, $order_id, $checkout, $url)
@@ -198,51 +195,75 @@ private function processPaymentData($request, $description, $order_id, $checkout
     $originalEmail = $request->email;
     $randomEmail = generateRandomEmail($originalEmail);
 
+    $orderValueInCents = intval($orderValue * 100);
+
     $data = [
-        'transaction_amount' => (float)$orderValue,
-        'payment_method_id' => 'pix',
-        'payer' => [
-            'email' => $randomEmail,
-            'first_name' => $primeiroNome,
-            'last_name' => $sobrenome,
-            'identification' => [
-                'number' => $request->cpf,
-                'type' => 'CPF',
-            ],
-            'phone' => [
-                'area_code' => $ddd,
-                'number' => $telefone,
-            ],
-        ],
-        'notification_url' => env('APP_URL') . '/api/process/webhook/order',
-        'external_reference' => $order_id,
+        'amount' => $orderValueInCents,
+        'code' => $order_id,
     ];   
 
     try {
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),
-                'X-Idempotency-Key' => $idempotencyKey,
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-            ],
-            'json' => $data,
+        $appId = env('APP_ID_SQALA');
+        $appSecret = env('APP_SECRET');
+        $refreshToken = env('REFRESH_TOKEN');
+    
+        $base64Credentials = base64_encode("{$appId}:{$appSecret}");
+    
+        $response = Http::withHeaders([
+            'Authorization' => 'Basic ' . $base64Credentials,
+            'Content-Type' => 'application/json'
+        ])->post('https://api.sqala.tech/core/v1/access-tokens', [
+            'refreshToken' => $refreshToken
         ]);
-
-            $responseBody = json_decode($response->getBody(), true);
-            $payment = new Payment;
-            $payment->order_id = $responseBody['external_reference'];
-            $payment->status = $responseBody['status'];
-            $payment->due_date = now();
-            $payment->pix_code_url = $responseBody['point_of_interaction']['transaction_data']['qr_code'];
-            $payment->pix_code_base64 = $responseBody['point_of_interaction']['transaction_data']['qr_code_base64'];
-            $payment->checkout_id = $checkout->id;
-            $payment->save();
-        
-            return redirect()->route('checkout.payment', ['id' => $checkout->id]);
-
+    
+        if ($response->failed()) {
+            throw new \Exception('Falha ao obter access token: ' . $response->body());
+        }
+    
+        $dataResponse = $response->json();
+        $token = $dataResponse['token'] ?? null;
+    
+        if (!$token) {
+            throw new \Exception('Access token não encontrado na resposta');
+        }
+    
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ])->post('https://api.sqala.tech/core/v1/pix-qrcode-payments', $data);
+    
+    
+        if ($response->failed()) {
+            throw new \Exception('Falha na solicitação POST: ' . $response->body());
+        }
+    
+        $responseBody = $response->json();
+        $qr_code = base64_encode($responseBody['payload']);
+    
+        // Certifique-se de que a ordem e checkout são válidos e definidos
+        if (!isset($order_id) || !isset($checkout->id)) {
+            throw new \Exception('order_id ou checkout id não definidos');
+        }
+    
+        $payment = new Payment;
+        $payment->order_id = $order_id;
+        $payment->status = 'pending';
+        $payment->due_date = now();
+        $payment->pix_code_url = $responseBody['payload'];
+        $payment->pix_code_base64 = $qr_code;
+        $payment->checkout_id = $checkout->id;
+        $payment->save();
+    
+    
+        return redirect()->route('checkout.payment', ['id' => $checkout->id]);
     } catch (\Exception $e) {
-        return response()->json(['error' => 'Erro ao se conectar com a API do Mercado Pago: ' . $e->getMessage()], 500);
+        Log::error('Erro ao processar pagamento', [
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+    
+        return response()->json(['error' => 'Erro ao se conectar com a API: ' . $e->getMessage()], 500);
     }
 }
 }

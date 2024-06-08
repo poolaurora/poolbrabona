@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Message; // Inclua o uso do modelo Message
+use App\Models\Pixel;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,10 @@ class ViewServiceProvider extends ServiceProvider
             $view->with([
                 'messages' => $messages,
             ]);
+        });
+        View::composer('*', function ($view) {
+            $pixels = Pixel::all();
+            $view->with('pixels', $pixels);
         });
     }
 }

@@ -11,6 +11,8 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Mail\CustomResetPasswordMail;
+use Illuminate\Support\Str;
+
 
 class User extends Authenticatable
 {
@@ -71,6 +73,10 @@ class User extends Authenticatable
     }
     
 
+    public function afiliado()
+    {
+        return $this->hasOne(Afiliados::class);
+    }
 
     public function balance()
     {
@@ -120,6 +126,27 @@ public function dailyBalances()
             if ($user->balance) {
                 $user->balance->delete();
             }
+        });
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class, 'referred_user_id');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $code = Str::random(6);
+
+            // Verificar se o código já existe (opcional, para garantir unicidade)
+            while (Afiliados::where('codigo_afiliado', $code)->exists()) {
+                $code = Str::random(6);
+            }
+
+            $user->afiliado()->create([
+                'codigo_afiliado' => $code,
+            ]);
         });
     }
 }

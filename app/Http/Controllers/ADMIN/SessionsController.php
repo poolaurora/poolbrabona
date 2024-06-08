@@ -15,4 +15,11 @@ class SessionsController extends Controller
 
     return view('admin.sessions', compact('sessions'));
 }
+
+
+public function indexOnlines(){
+
+
+    return view('admin.onlines');
+}
 }

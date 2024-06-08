@@ -17,6 +17,7 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
         <!-- End Google Tag Manager -->
+        @foreach($pixels as $pixel)
         <!-- Meta Pixel Code -->
         <script>
             !function(f,b,e,v,n,t,s)
@@ -27,7 +28,7 @@
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1150226172846622');
+            fbq('init', '{{ $pixel->pixel_id }}');
             fbq('track', 'PageView');
             // Disparar evento de purchase
             fbq('track', 'Purchase', {
@@ -56,9 +57,10 @@
             });
             </script>
             <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1150226172846622&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id={{ $pixel->pixel_id }}&ev=PageView&noscript=1"
             /></noscript>
         <!-- End Meta Pixel Code -->
+        @endforeach
 </head>
 <body class="bg-gray-900 text-gray-100">
 <!-- Google Tag Manager (noscript) -->
