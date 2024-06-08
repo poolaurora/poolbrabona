@@ -29,6 +29,7 @@ class PedidosSearch extends Component
                     ->orWhereHas('payment', function($query) use ($searchTerm) {
                         $query->where('order_id', 'like', $searchTerm);
                     })
+                    ->orderBy('created_at', 'desc')
                     ->paginate(10);
 
         return view('livewire.pedidos-search', [
