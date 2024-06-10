@@ -4,38 +4,63 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Services\IpInfoService;
+use App\Models\IpDetail;
 
 class DetectGoogleBot
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
+    protected $ipInfoService;
+
+    public function __construct(IpInfoService $ipInfoService)
+    {
+        $this->ipInfoService = $ipInfoService;
+    }
+
     public function handle(Request $request, Closure $next)
     {
         $userAgent = $request->header('User-Agent');
         $ip = $request->ip();
+        $ipSave = IpDetail::where('ip', $ip)->first();
 
-        if ($this->isFacebookBot($userAgent, $ip)) {
-            // Modifique a resposta para Facebook Bots aqui, se necessário
-            $response = $next($request);
-            $response->setContent(view('welcome-ads')->render());
-            return $response;
+        if ($ipSave) {
+            if ($ipSave->blocked === 1) {
+                $response = $next($request);
+                $response->setContent(view('welcome-ads')->render());
+                return $response;
+            }
+        } else {
+            $ipInfo = $this->ipInfoService->getIpInfo($ip);
+
+            if ($ipInfo) {
+                $ipSave = new IpDetail();
+                $ipSave->ip = $ip;
+                $ipSave->hostname = $ipInfo['hostname'] ?? $ip;
+                $ipSave->city = $ipInfo['city'] ?? null;
+                $ipSave->region = $ipInfo['region'] ?? null;
+                $ipSave->country = $ipInfo['country'] ?? null;
+                $ipSave->timezone = $ipInfo['timezone'] ?? null;
+                $ipSave->org = $ipInfo['org'] ?? null;
+
+                // Verifica se é um bot do Google ou do Facebook e define blocked como true
+                if ($this->isGoogleBot($ipSave->hostname) || $this->isFacebookBot($userAgent, $ip)) {
+                    $ipSave->blocked = true;
+                } else {
+                    $ipSave->blocked = false;
+                }
+
+                $ipSave->save();
+
+                if ($ipSave->blocked) {
+                    $response = $next($request);
+                    $response->setContent(view('welcome-ads')->render());
+                    return $response;
+                }
+            }
         }
 
         return $next($request);
     }
 
-    /**
-     * Check if the request comes from a Facebook bot
-     *
-     * @param string $userAgent
-     * @param string $ip
-     * @return bool
-     */
     protected function isFacebookBot($userAgent, $ip)
     {
         $facebookBots = [
@@ -54,12 +79,11 @@ class DetectGoogleBot
         return false;
     }
 
-    /**
-     * Perform a reverse DNS lookup to verify the IP address comes from Facebook's domain
-     *
-     * @param string $ip
-     * @return bool
-     */
+    protected function isGoogleBot($hostname)
+    {
+        return strpos($hostname, 'googlebot.com') !== false || strpos($hostname, 'google.com') !== false;
+    }
+
     protected function isFromFacebookDomain($ip)
     {
         $hostname = gethostbyaddr($ip);
