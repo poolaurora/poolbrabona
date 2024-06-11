@@ -49,8 +49,10 @@ class FacebookConversionService
             ];
 
             $url .= '?' . http_build_query($data);
-    
+        
             $response = $this->client->post($url);
+
+            \Log::info('Response:', json_decode($response->getBody(), true)); // Log para debuggar
     
         }
     
