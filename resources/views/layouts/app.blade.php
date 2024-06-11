@@ -7,13 +7,12 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
         <title>Aurora Miner - O melhor site de mineração do Brasil</title>
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-WL4RN8XZ');</script>
-         <!-- End Google Tag Manager -->
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-16527209893');
+        </script>
          @foreach($pixels as $pixel)
          <!-- Meta Pixel Code -->
          <script>
@@ -48,14 +47,6 @@
         <script src="/js/deleteMessage.js"></script>
         <!-- Styles -->
         @livewireStyles
-
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K73NKPZ6');</script>
-<!-- End Google Tag Manager -->
     </head>
     <body 
     @if(request()->routeIs('maquinas.menu'))
@@ -84,15 +75,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             @else
                 
             @endif
-
-            <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K73NKPZ6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         @if(auth()->user()->hasRole('banido') || auth()->user()->hasPermissionTo('banido'))
             <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-opacity-80 z-50"></div>
