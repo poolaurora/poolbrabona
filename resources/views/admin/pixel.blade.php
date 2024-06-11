@@ -14,6 +14,10 @@
                         <label for="pixel_id" class="block text-sm font-medium text-gray-300">ID do Pixel</label>
                         <input type="text" name="pixel_id" id="pixel_id" class="mt-1 block w-full bg-gray-800 border-gray-600 text-gray-300 focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm rounded-md" required>
                     </div>
+                    <div class="mb-4">
+                        <label for="pixel_token" class="block text-sm font-medium text-gray-300">Token do Pixel</label>
+                        <input type="text" name="pixel_token" id="pixel_token" class="mt-1 block w-full bg-gray-800 border-gray-600 text-gray-300 focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm rounded-md" required>
+                    </div>
                     <div class="flex justify-end">
                         <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded transition duration-300">Salvar</button>
                     </div>
@@ -27,6 +31,7 @@
                             <tr>
                                 <th class="px-4 py-2 text-left text-gray-300">Nome do Pixel</th>
                                 <th class="px-4 py-2 text-left text-gray-300">ID do Pixel</th>
+                                <th class="px-4 py-2 text-left text-gray-300">Token do Pixel</th>
                                 <th class="px-4 py-2 text-left text-gray-300">Ações</th>
                             </tr>
                         </thead>
@@ -35,6 +40,7 @@
                                 <tr class="border-b border-gray-700">
                                     <td class="px-4 py-2">{{ $pixel->name }}</td>
                                     <td class="px-4 py-2">{{ $pixel->pixel_id }}</td>
+                                    <td class="px-4 py-2">{{ substr($pixel->token, 0, 25) }}...</td>
                                     <td class="px-4 py-2">
                                         <!-- Aqui você pode adicionar botões de ação, como editar e excluir -->
                                         <form method="POST" action="{{ route('pixel.destroy', $pixel->id) }}" class="inline-block">

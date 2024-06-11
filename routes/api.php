@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\PaymentNotificationController;
+use App\Http\Controllers\PixelController;
+
 
 
 // PAYLOADERS
@@ -30,6 +32,8 @@ Route::post('/messages/delete', [MessageController::class, 'delete']);
 
 Route::post('/process/webhook/order', [PaymentNotificationController::class, 'receiveNotification']);
 
+
+Route::post('/send-facebook-event', [PixelController::class, 'sendEvent']);
 
 Route::post('/process/plan/order', [PlanPayloaderController::class, 'data']);
 Route::post('/process/maquinas/order', [MaquinasPayloaderController::class, 'data']);

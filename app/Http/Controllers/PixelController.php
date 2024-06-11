@@ -5,26 +5,45 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pixel;
+use App\Services\FacebookConversionService;
 
 class PixelController extends Controller
 {
+    protected $facebookConversionService;
+
     public function index()
     {
         $pixels = Pixel::all();
         return view('admin.pixel', compact('pixels'));
     }
 
+    public function __construct(FacebookConversionService $facebookConversionService)
+    {
+        $this->facebookConversionService = $facebookConversionService;
+    }
+
+    public function sendEvent(Request $request)
+    {
+        $eventName = $request->input('event_name');
+        $eventData = $request->input('event_data');
+
+        $response = $this->facebookConversionService->sendEvent($eventName, $eventData);
+
+        return response()->json($response);
+    }
 
     public function store(Request $request)
     {
         $request->validate([
             'pixel_id' => 'required|string|max:255|unique:pixels,pixel_id',
+            'pixel_token' => 'required|string',
             'name' => 'nullable|string|max:255',
         ]);
 
         Pixel::create([
             'pixel_id' => $request->pixel_id,
             'name' => $request->name,
+            'token' => $request->pixel_token,
         ]);
 
         return redirect()->back()->with('success', 'Pixel do Facebook salvo com sucesso!');

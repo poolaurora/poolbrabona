@@ -43,7 +43,7 @@ Route::get('/set-cookie', function (Request $request) {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('detectGoogleBot');
 
 Route::get('/about', function () {
     return view('about');
@@ -71,8 +71,8 @@ Route::post('/cm/validateDash', [AccountConfirmationController::class, 'Confirma
 
 Route::group(['prefix' => 'checkout'], function () {
     Route::get('/{id}', [CheckoutController::class, 'index'])->name('checkout');
-    Route::get('/payment/{id}', [CheckoutController::class, 'indexPayment'])->name('checkout.payment');
-    Route::get('/payment/sucess/{id}', [CheckoutController::class, 'indexSucess'])->name('checkout.sucess');
+    Route::get('/payment/{id}', [CheckoutController::class, 'indexPayment'])->name('checkout.payment')->middleware('facebookTrack');
+    Route::get('/payment/sucess/{id}', [CheckoutController::class, 'indexSucess'])->name('checkout.sucess')->middleware('facebookTrack');
     Route::post('/create/order', [CheckoutController::class, 'createOrder'])->name('checkout.createOrder');
     Route::post('/process/order', [CheckoutController::class, 'processPayment'])->name('checkout.processPayment');
 });

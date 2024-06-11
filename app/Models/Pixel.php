@@ -12,5 +12,6 @@ class Pixel extends Model
     protected $fillable = [
         'pixel_id',
         'name',
+        'token',
     ];
 }
