@@ -12,6 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16527209893"></script>
     @foreach($tags as $tag)
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tag->tag_id }}"></script>
        <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }

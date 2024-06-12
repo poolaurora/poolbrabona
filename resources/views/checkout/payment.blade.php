@@ -11,8 +11,8 @@
     <title>Aurora Miner - PIX</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 @foreach($tags as $tag)
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $tag->tag_id }}"></script>
        <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }

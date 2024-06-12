@@ -8,6 +8,7 @@
         <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
         <title>Aurora Miner - O melhor site de mineração do Brasil</title>
        @foreach($tags as $tag)
+       <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tag->tag_id }}"></script>
        <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
