@@ -43,7 +43,7 @@ Route::get('/set-cookie', function (Request $request) {
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware('detectGoogleBot');
+});
 
 Route::get('/about', function () {
     return view('about');
