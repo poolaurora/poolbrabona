@@ -10,7 +10,6 @@
     <title>Agradecimento pelo Pagamento</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16527209893"></script>
     @foreach($tags as $tag)
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tag->tag_id }}"></script>
        <script>
@@ -19,15 +18,6 @@
         gtag('js', new Date());
         gtag('config', '{{ $tag->tag_id }}');
         </script>
-
-    <script>
-    gtag('event', 'conversion', {
-        'send_to': '{{ $tag->tag_id }}/{{ $tag->token }}',
-        'value':@if(isset(json_decode($payment->checkout->description, true)['plan'])){{ number_format(json_decode($payment->checkout->description, true)['plan']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['maquinas'])){{ number_format(json_decode($payment->checkout->description, true)['maquinas']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['upgradeMaquinas'])){{ number_format(json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['salaData'])){{ number_format(json_decode($payment->checkout->description, true)['salaData']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['UpgradePlanData'])){{ number_format(json_decode($payment->checkout->description, true)['UpgradePlanData']['value'], 2, '.', '') }}@endif,
-        'currency': 'BRL',
-        'transaction_id': '{{ $payment->order_id }}'
-    });
-    </script>
     @endforeach
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Event snippet for COMPRA-02 conversion page -->
@@ -77,12 +67,16 @@
         @endforeach
 </head>
 <body class="bg-gray-900 text-gray-100">
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K73NKPZ6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL4RN8XZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+@foreach($tags as $tag)    
+<script>
+    gtag('event', 'conversion', {
+        'send_to': '{{ $tag->tag_id }}/{{ $tag->token }}',
+        'value':@if(isset(json_decode($payment->checkout->description, true)['plan'])){{ number_format(json_decode($payment->checkout->description, true)['plan']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['maquinas'])){{ number_format(json_decode($payment->checkout->description, true)['maquinas']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['upgradeMaquinas'])){{ number_format(json_decode($payment->checkout->description, true)['upgradeMaquinas']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['salaData'])){{ number_format(json_decode($payment->checkout->description, true)['salaData']['value'], 2, '.', '') }}@elseif(isset(json_decode($payment->checkout->description, true)['UpgradePlanData'])){{ number_format(json_decode($payment->checkout->description, true)['UpgradePlanData']['value'], 2, '.', '') }}@endif,
+        'currency': 'BRL',
+        'transaction_id': '{{ $payment->order_id }}'
+    });
+</script>
+@endforeach
     <div class="container mx-auto px-4 py-8">
     <div class="max-w-lg mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div class="p-6 w-full text-center">
