@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pixel;
+use App\Models\GoogleTags;
 use App\Services\FacebookConversionService;
 
 class PixelController extends Controller
@@ -14,7 +15,8 @@ class PixelController extends Controller
     public function index()
     {
         $pixels = Pixel::all();
-        return view('admin.pixel', compact('pixels'));
+        $tags = GoogleTags::all();
+        return view('admin.pixel', compact('pixels', 'tags'));
     }
 
     public function __construct(FacebookConversionService $facebookConversionService)
@@ -55,5 +57,31 @@ class PixelController extends Controller
         $pixel->delete();
 
         return redirect()->back()->with('success', 'Pixel deletado com sucesso!');
+    }
+
+
+    public function GoogleStore(Request $request)
+    {
+        $request->validate([
+            'tag_id' => 'required|string|max:255|unique:google_tags,tag_id',
+            'tag_token' => 'required|string',
+            'name' => 'nullable|string|max:255',
+        ]);
+
+        GoogleTags::create([
+            'tag_id' => $request->tag_id,
+            'name' => $request->name,
+            'token' => $request->tag_token,
+        ]);
+
+        return redirect()->back()->with('success', 'Tag do Google salvo com sucesso!');
+    }
+
+    public function Googledestroy($id)
+    {
+        $tag = GoogleTags::findOrFail($id);
+        $tag->delete();
+
+        return redirect()->back()->with('success', 'tag deletado com sucesso!');
     }
 }

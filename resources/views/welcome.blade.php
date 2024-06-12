@@ -6,13 +6,16 @@
     <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
     <title>Aurora Miner - O melhor site de mineração do Brasil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" async referrerpolicy="no-referrer" />
+    @foreach($tags as $tag)
+       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'AW-16527209893');
-    </script>
+        gtag('config', '{{ $tag->tag_id }}');
+        </script>
+    @endforeach
         @foreach($pixels as $pixel)
          <!-- Meta Pixel Code -->
          <script>
@@ -27,7 +30,7 @@
         fbq('init', '{{ $pixel->pixel_id }}');
         fbq('track', 'PageView');
         </script>
-        <noscript><img height="1" width="1" style="display:none"
+        <noscript><img loading="lazy" height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id={{ $pixel->pixel_id }}&ev=PageView&noscript=1"
         /></noscript>
         <!-- End Meta Pixel Code -->
@@ -167,7 +170,7 @@
 <body class="bg-gray-900 text-gray-200 max-w-full">
     <header class="flex flex-row-reverse lg:flex-row items-center justify-between p-4">
         <div class="text-3xl font-bold">
-            <a href="#"><img src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" class="size-14 flex lg:justify-left justift-right"></a>
+            <a href="#"><img loading="lazy" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" class="size-14 flex lg:justify-left justift-right"></a>
         </div>
         <div class="lg:hidden">
             <button id="menuBtn" class="text-gray-400 hover:text-emerald-500">
@@ -292,7 +295,7 @@
             <!-- Image/Graphic Section -->
             <div class="lg:w-1/2 px-4 flex justify-center">
                 <!-- Replace with actual image -->
-                <img src="https://aurora-miner.b-cdn.net/images/gif.gif" class="rounded-lg shadow-xl w-11/12 md:w-12/12">
+                <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/gif.gif" class="rounded-lg shadow-xl w-11/12 md:w-12/12">
             </div>
         </div>
         <!-- Video and Button Section -->
@@ -385,7 +388,7 @@
             @csrf
             <input type="hidden" name="plan" value="bear">      
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                        <img src="https://aurora-miner.b-cdn.net/images/bear.webp">
+                        <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/bear.webp">
                         <h2 class="text-2xl font-bold mb-4">Bear</h2>
                        <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$1.600,00
                        </p>
@@ -409,7 +412,7 @@
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 text-white px-4 py-1 rounded-full shadow-lg">
                             <span class="font-bold lg:text-md text-sm">MELHOR ESCOLHA</span>
                         </div>
-                        <img src="https://aurora-miner.b-cdn.net/images/shark.webp" alt="Shark">
+                        <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/shark.webp" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p>
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$719,92/<b class="text-emerald-400">mês</b></p>
@@ -429,7 +432,7 @@
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 text-white px-4 py-1 rounded-full shadow-lg">
                             <span class="font-bold lg:text-md text-sm">MELHOR ESCOLHA</span>
                         </div>
-                        <img src="https://aurora-miner.b-cdn.net/images/shark.webp" alt="Shark">
+                        <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/shark.webp" alt="Shark">
                         <h2 class="text-2xl font-bold mb-4">Shark</h2>
                       <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 glow bg-gradient-to-r from-emerald-400 via-emerald-600 to-emerald-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$4.200,00</p> 
                         <p id="SharkPrice" class="text-4xl font-bold mb-6">R$899,90/<b class="text-emerald-400">mês</b></p>
@@ -449,7 +452,7 @@
                 <input type="hidden" name="plan" value="lion">    
                     <!-- Price Card 3 -->
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                        <img src="https://aurora-miner.b-cdn.net/images/lion.webp">
+                        <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/lion.webp">
                         <h2 class="text-2xl font-bold mb-4">Lion</h2>
                   <p class="text-white text-md rounded-full p-2 w-2/3 text-center mb-6 bg-gradient-to-r from-orange-400 via-orange-600 to-orange-800 font-bold flex items-center justify-center"><i class="fa-solid fa-angles-up mr-4 text-xl"></i> R$2.400,00</p>
                         <p class="text-4xl font-bold mb-6">R$569,90/<b class="text-orange-400">mês</b></p>
@@ -543,9 +546,9 @@
                     <h3 class="text-lg font-semibold mb-2">TAG <span class="p-1 rounded-lg bg-blue-500 text-white">EXCLUSIVA</span> EM NOSSO CHAT</h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-blue-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
-                        <img class="w-full h-full"
+                        <img loading="lazy" class="w-full h-full"
                             src="https://aurora-miner.b-cdn.net/images/bear-tag.webp">
-                        </img>
+                        </img loading="lazy">
                     </div>
                 </div>
 
@@ -635,9 +638,9 @@
                     <h3 class="text-lg font-semibold mb-2">TAG <span class="p-1 rounded-lg bg-emerald-500 text-white">EXCLUSIVA</span> EM NOSSO CHAT</h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
-                        <img class="w-full h-full"
+                        <img loading="lazy" class="w-full h-full"
                             src="https://aurora-miner.b-cdn.net/images/shark-tag.png">
-                        </img>
+                        </img loading="lazy">
                     </div>
                 </div>
 
@@ -728,9 +731,9 @@
                     <h3 class="text-lg font-semibold mb-2">TAG <span class="p-1 rounded-lg bg-orange-500 text-white">EXCLUSIVA</span> EM NOSSO CHAT</h3>
                     <p class="text-md text-transparent bg-clip-text bg-gradient-to-l from-orange-400 via-gray-500 to-gray-600">Tenha acesso a uma TAG unica em nosso site para mostrar a todos o seu plano.</p>
                     <div class="w-full overflow-hidden rounded-lg shadow-lg mt-2">
-                        <img class="w-full h-full"
+                        <img loading="lazy" class="w-full h-full"
                             src="https://aurora-miner.b-cdn.net/images/lion-tag.png">
-                        </img>
+                        </img loading="lazy">
                     </div>
                 </div>
 
@@ -864,7 +867,7 @@
             </div>
             <div class="flex justify-center">
                 <div class="flex flex-col justify-center lg:w-2/5">
-                    <img class="hover:scale-105 cursor-pointer" src="https://aurora-miner.b-cdn.net/images/mystery-box.png" alt="">
+                    <img loading="lazy" class="hover:scale-105 cursor-pointer" src="https://aurora-miner.b-cdn.net/images/mystery-box.png" alt="">
                     <span class="text-gray-400 text-lg text-center mb-5">Tenha a chance de ganhar até 70% de desconto na compra de um plano! Teste sua <b>SORTE</b> agora!</span>
                     <button id="openBoxButton" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-2 rounded text-2xl">Abrir caixa</button>
                 </div>
@@ -886,7 +889,7 @@
                 <span class="text-gray-300 text-lg">um cupom de descontos para o plano <b class="font-bold text-emerald-500">SHARK</b></span>
             </div>
             <div class="flex w-full justify-center flex-col items-center">
-                <img class="w-2/4" src="https://aurora-miner.b-cdn.net/images/20OFF.png">
+                <img loading="lazy" class="w-2/4" src="https://aurora-miner.b-cdn.net/images/20OFF.png">
                 <button id="take-reward" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-2 rounded text-xl w-3/4">RESGATAR RECOMPENSA</button>
             </div>
             </div>
@@ -901,28 +904,28 @@
                     <div class="roulette-inner" id="roulette">
                         <!-- Repetir para cada item. A quantidade de itens deve ser suficiente para preencher mais de 100% da largura do contêiner para que a animação funcione corretamente -->
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/70OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/70OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                             <span class="text-sm">PLANO SHARK</span>    
                             </div>                        
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/50OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/50OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                             <span class="text-sm">PLANO SHARK</span>    
                             </div>                        
                         </div>
                         <div data-id="desired" class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/20OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/20OFF.png" class="rounded-lg">
                         <div>
                         <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                         <span class="text-sm">PLANO SHARK</span>    
                         </div>                        
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/L70OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L70OFF.png" class="rounded-lg">
                             <div>
                         <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                         <span class="text-sm">PLANO LION</span>
@@ -930,7 +933,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/L50OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L50OFF.png" class="rounded-lg">
                             <div>
                         <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                         <span class="text-sm">PLANO LION</span>
@@ -938,7 +941,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/L20OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L20OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                             <span class="text-sm">PLANO LION</span>
@@ -946,7 +949,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/B70OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B70OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">70% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -954,7 +957,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/B50OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B50OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">50% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -962,7 +965,7 @@
                             </div>
                         </div>
                         <div class="border-1 border-gray-900 roulette-item bg-gray-800 rounded-lg shadow-lg">
-                            <img src="https://aurora-miner.b-cdn.net/images/B20OFF.png" class="rounded-lg">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B20OFF.png" class="rounded-lg">
                             <div>
                             <h1 class="text-lg font-bold">20% DE DESCONTO</h1>
                             <span class="text-sm">PLANO BEAR</span>
@@ -985,7 +988,7 @@
                                 <div class="absolute top-14 glow left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full shadow-lg z-10">
                                     <span class="font-bold lg:text-lg text-sm">EDIÇÃO LIMITADA</span>
                                 </div>
-                                <img src="https://aurora-miner.b-cdn.net/images/mystery-box.png" class="rounded-lg mb-2 p-2 w-3/5">
+                                <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/mystery-box.png" class="rounded-lg mb-2 p-2 w-3/5">
                                 <div class="flex justify-center items-center w-full">
                                     <button class="bg-emerald-600 py-2 text-xl font-bold px-4 rounded cursos-pointer">Abrir caixa</button>
                                 </div>
@@ -1005,50 +1008,50 @@
                     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3 px-2 w-full">
                         <!-- Repeat for each item -->
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/70OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/70OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/50OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/50OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/20OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/20OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-emerald-500">SHARK</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/L70OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L70OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/L50OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L50OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/L20OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/L20OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-orange-500">LION</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/B70OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B70OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">70% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/B50OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B50OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">50% DE DESCONTO</div>
 
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-3">
-                            <img src="https://aurora-miner.b-cdn.net/images/B20OFF.png" class="rounded-lg mb-2">
+                            <img loading="lazy" src="https://aurora-miner.b-cdn.net/images/B20OFF.png" class="rounded-lg mb-2">
                             <div class="text-lg mb-1 font-bold">20% DE DESCONTO</div>
                             <div class="text-lg">PLANO <b class="font-bold text-blue-500">BEAR</b></div>
                         </div>
@@ -1068,7 +1071,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
-                    <img class="w-20" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp">
+                    <img loading="lazy" class="w-20" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp">
                     <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>53.789.138/0001-88<br>AV ALÍCIO ARANTES CAMPOLINA, PIONEIRO 2882 - PR</p>
                 </div>
                 <div class="mb-8 md:mb-0">
@@ -1152,8 +1155,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<script src="/js/roulette.js"></script>
-<script src="/js/takereward.js"></script>
+<script src="/js/roulette.js" async></script>
+<script src="/js/takereward.js" async></script>
 <script src="/js/saques.js"></script>
 </body>
 </html>

@@ -162,6 +162,8 @@ Route::middleware([
             Route::post('/pixel/store', [PixelController::class, 'store'])->name('pixel.store');
             Route::delete('/pixel/{pixel}', [PixelController::class, 'destroy'])->name('pixel.destroy');
 
+            Route::post('/tag/store', [PixelController::class, 'GoogleStore'])->name('tag.store');
+            Route::delete('/tag/{tag}', [PixelController::class, 'Googledestroy'])->name('tag.destroy');
 
             Route::get('/onlines', [SessionsController::class, 'indexOnlines'])->name('admin.onlines');
 

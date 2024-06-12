@@ -12,12 +12,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<script>
+@foreach($tags as $tag)
+       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'AW-16527209893');
-    </script>
+        gtag('config', '{{ $tag->tag_id }}');
+        </script>
+    @endforeach
 
         @foreach($pixels as $pixel)
         <!-- Meta Pixel Code -->

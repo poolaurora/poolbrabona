@@ -7,12 +7,14 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
         <title>Aurora Miner - O melhor site de mineração do Brasil</title>
-        <script>
+       @foreach($tags as $tag)
+       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'AW-16527209893');
+        gtag('config', '{{ $tag->tag_id }}');
         </script>
+        @endforeach
          @foreach($pixels as $pixel)
          <!-- Meta Pixel Code -->
          <script>

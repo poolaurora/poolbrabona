@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Message; // Inclua o uso do modelo Message
 use App\Models\Pixel;
+use App\Models\GoogleTags;
+
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -21,8 +23,9 @@ class ViewServiceProvider extends ServiceProvider
             ]);
         });
         View::composer('*', function ($view) {
+            $tags = GoogleTags::all();
             $pixels = Pixel::all();
-            $view->with('pixels', $pixels);
+            $view->with('pixels', $pixels)->with('tags', $tags);
         });
     }
 }
