@@ -7,6 +7,7 @@
     <title>Aurora Miner - O melhor site de mineração do Brasil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" async referrerpolicy="no-referrer" />
     @foreach($tags as $tag)
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tag->tag_id }}"></script>
@@ -15,7 +16,7 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', '{{ $tag->tag_id }}');
-        </script>
+    </script>
     @endforeach
         @foreach($pixels as $pixel)
          <!-- Meta Pixel Code -->

@@ -15,38 +15,66 @@ use Illuminate\Support\Facades\Auth;
 class AccountController extends Controller
 {
     public function create(Request $request)
-{
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'username' => ['required', 'string', 'min:8', 'max:255', 'unique:users', 'not_regex:/^\+?[1-9]\d{1,14}$/', 'not_regex:/^\S+@\S+\.\S+$/'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'password' => 'required|string|min:8|unique:users',
-    ]);
-
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'username' => $request->username,
-        'password' => Hash::make($request->password),
-    ]);
-
-    // Gerar token de confirmação
-    $token = Str::random(60);
-    $cod = Str::random(4);
-    DB::table('account_confirmations')->insert([
-        'email' => $user->email,
-        'token' => $token,
-        'cod' => $cod,
-        'created_at' => now(),
-    ]);
-
-    // Enviar email de confirmação
-    Mail::to($user->email)->send(new ConfirmAccount($token, $cod, $user->name));
-
-    // Redirecionar para a view, passando o token como parâmetro
-    return redirect()->route('auth.cm', ['token' => $token]);
-}
-
+    {
+        // Validação dos dados de entrada
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'min:8', 'max:255', 'unique:users', 'not_regex:/^\+?[1-9]\d{1,14}$/', 'not_regex:/^\S+@\S+\.\S+$/'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => 'required|string|min:8|unique:users',
+        ]);
+    
+        // Lista de domínios de emails permitidos
+        $allowedDomains = [
+            'gmail.com',
+            'outlook.com',
+            'outlook.com.br',
+            'hotmail.com',
+            'live.com',
+            'live.com.br',
+            'hotmail.com.br',
+            'yahoo.com',
+            'yahoo.com.br',
+            'bol.com.br',
+            'walla.com',
+            'icloud.com',
+            'uol.com.br',
+            'protonmail.com'
+        ];
+    
+        // Verificar se o email pertence a um domínio permitido
+        $email = $request->email;
+        $domain = substr(strrchr($email, "@"), 1);
+    
+        if (!in_array($domain, $allowedDomains)) {
+            return back()->withErrors(['email' => 'O domínio do email não é permitido. Use um email de um domínio conhecido.'])->withInput();
+        }
+    
+        // Criar o usuário
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+        ]);
+    
+        // Gerar token de confirmação
+        $token = Str::random(60);
+        $cod = Str::random(4);
+        DB::table('account_confirmations')->insert([
+            'email' => $user->email,
+            'token' => $token,
+            'cod' => $cod,
+            'created_at' => now(),
+        ]);
+    
+        // Enviar email de confirmação
+        Mail::to($user->email)->send(new ConfirmAccount($token, $cod, $user->name));
+    
+        // Redirecionar para a view, passando o token como parâmetro
+        return redirect()->route('auth.cm', ['token' => $token]);
+    }
+    
 
 public function createOrder(Request $request)
       {

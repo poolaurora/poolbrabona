@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\TrackOnlineUsers::class,
             \App\Http\Middleware\TrustCloudflare::class,
+            \App\Http\Middleware\BanSystem::class,
         ],
 
         'api' => [
