@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Http;
+use App\Models\Afiliados;
+
 
 class CheckoutController extends Controller
 {
@@ -144,9 +146,14 @@ public function processPayment(Request $request)
     $checkout->nome = $request->nome;
     $checkout->telefone = $request->telefone;
     $checkout->email = $request->email;
-    if($request->afid !== null){
-    $checkout->afiliacao = $request->afid;    
+
+    if ($request->afid !== null) {
+        $afiliado = Afiliados::where('codigo_afiliado', $request->afid)->first();
+        if ($afiliado) {
+            $checkout->afiliacao = $request->afid;
+        }
     }
+
     $checkout->save();
 
     $description = json_decode($checkout->description, true);
