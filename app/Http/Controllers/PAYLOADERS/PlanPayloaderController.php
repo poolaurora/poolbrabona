@@ -13,6 +13,8 @@ use GuzzleHttp\Client;
 use App\Models\User;
 use App\Mail\PurchaseConfirmation;
 use App\Mail\UserCredentials;
+use App\Models\Afiliados;
+use App\Models\Referral;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
@@ -55,6 +57,10 @@ class PlanPayloaderController extends Controller
 
         $planDetails = $this->processPlan($user, $checkout);
         Mail::to($checkout->email)->send(new PurchaseConfirmation($checkout, $pedido));
+         // Verificar se o usuário foi indicado por alguém
+         if (!empty($checkout->afiliacao)) {
+            $this->handleReferral($user, $checkout->afiliacao, $checkout);
+        }
         event(new PaymentSucess($checkout));
         return response()->json(['message' => 'Pagamento processado com sucesso.'], 200);
     }
@@ -122,5 +128,43 @@ class PlanPayloaderController extends Controller
     }
 
 }
+
+private function handleReferral($user, $referralCode, $checkout)
+{
+    $referrer = Afiliados::where('codigo_afiliado', $referralCode)->first();
+    if ($referrer) {
+        $description = json_decode($checkout->description, true);
+        $plano = $description['plan']['name'];
+        $desc = 0;
+
+        // Determina o nível da máquina com base no plano do indicado
+        switch ($plano) {
+            case 'Shark':
+            case 'Shark 20% OFF': 
+                $desc = 'rec3';
+                break;
+            case 'Lion':
+                $desc = 'rec2';
+                break;
+            case 'Bear':
+                $desc = 'rec1';
+                break;
+            default:
+                throw new \Exception('Plano não encontrado');
+        }
+
+        // Criar uma máquina para o referenciador com base no nível determinado
+        $referrerUser = User::find($referrer->user_id);
+        if ($referrerUser) {
+            $referral = new Referral;
+            $referral->affiliate_code_id = $referralCode;
+            $referral->referred_user_id = $user->id;
+            $referral->reffer_status = 'Unclaimed';
+            $referral->item_purchased = $desc;
+            $referral->save();
+        }
+    }
+}
+
 
 }

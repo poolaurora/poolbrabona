@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
 {
-    public function index($id)
+    public function index(Request $request, $id)
     {   
         // Busca o checkout com base no txId. Se não encontrar, retorna um erro 404.
         $checkout = Checkout::where('txId', $id)->firstOrFail();
@@ -33,8 +33,10 @@ class CheckoutController extends Controller
             $oldCheckout = Checkout::where('email', $user->email)->where('status', 'paid')->first();
         }
     
+        $cookieReferralCode = $request->cookie('AffiliateCodeCookie');
+
         // Passa os dados do checkout e do oldCheckout (pode ser null) para a view.
-        return view('checkout.welcome', compact('checkout', 'oldCheckout'));
+        return view('checkout.welcome', compact('checkout', 'oldCheckout', 'cookieReferralCode'));
     }
     
 
@@ -137,6 +139,16 @@ public function processPayment(Request $request)
     $order_id = uniqid(); 
 
     $checkout = Checkout::where('txId', $request->txId)->firstOrFail();
+
+    $checkout->cpf = $request->cpf;
+    $checkout->nome = $request->nome;
+    $checkout->telefone = $request->telefone;
+    $checkout->email = $request->email;
+    if($request->afid !== null){
+    $checkout->afiliacao = $request->afid;    
+    }
+    $checkout->save();
+
     $description = json_decode($checkout->description, true);
     $url = "https://api.sqala.tech/core/v1/pix-qrcode-payments"; 
 

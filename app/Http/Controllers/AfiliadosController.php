@@ -43,13 +43,74 @@ class AfiliadosController extends Controller
     }
 
 
-    public function bonus(){
+    public function bonus()
+{
+    $user = auth()->user();
 
-        $user = auth()->user();
+    // Supondo que o usuário tenha um relacionamento 'afiliado' que retorna um modelo com o código de afiliado
+    $codigoAfiliado = $user->afiliado->codigo_afiliado;
 
-        $recompensas = Referral::where('referred_user_id', $user->id);
+    // Recupera todas as recompensas baseadas no código de afiliado
+    $recompensas = Referral::where('affiliate_code_id', $codigoAfiliado)->get();
 
-        return view('afiliados.bonus', compact('recompensas'));
+    return view('afiliados.bonus', compact('recompensas'));
+}
+
+
+    public static function CookieSaver($ref){
+
+        $afiliado = Afiliados::where('codigo_afiliado', $ref)->first();
+        if(!$afiliado){
+            return redirect('/');
+        }
+        $cookie = cookie()->forever('AffiliateCodeCookie', $ref);
+        return redirect('/')->withCookie($cookie);
 
     }
+
+
+    public function resgate(Request $request)
+{
+
+    $request->all();
+
+    $recompensa = Referral::find($request->recompensaId);
+
+    if ($recompensa->reffer_status === 'Claimed') {
+        return redirect()->back()->with('error', 'Recompensa já foi resgatada');
+    }
+
+    $recompensa->reffer_status = 'Claimed';
+    $recompensa->save();
+
+    $user = auth()->user();
+    $referrer = Afiliados::where('codigo_afiliado', $recompensa->affiliate_code_id)->first();
+
+    if ($user->id !== $referrer->user_id) {
+        return redirect()->back()->with('error', 'Você está tentando resgatar uma recompensa que não é sua');
+    }
+
+    switch ($recompensa->item_purchased) {
+        case 'rec1': 
+            $user->miningMachines()->create([
+                'level' => 1,
+            ]);
+            break;
+        case 'rec2':
+            $user->miningMachines()->create([
+                'level' => 2,
+            ]);
+            break;
+        case 'rec3':
+            $user->miningMachines()->create([
+                'level' => 3,
+            ]);
+            break;
+        default:
+            throw new \Exception('Plano não encontrado');
+    }
+
+    return redirect()->back()->with('success', 'Recompensa resgatada com sucesso');
+}
+
 }

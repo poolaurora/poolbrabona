@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurora Miner - Checkout Seguro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Tag Manager -->
@@ -61,8 +62,36 @@
                 <h2 class="text-3xl font-extrabold text-white mb-6">Finalize sua compra com segurança</h2>
                 <form action="{{ route('checkout.processPayment') }}" method="POST">
                 @csrf
-                @livewire('checkout-form', ['txId' => $checkout->txId])
                 <input type="hidden" name="txId" value="{{ $checkout->txId }}">
+                <div class="space-y-4">
+                <div>
+                    <label for="nome" class="sr-only">Nome Completo</label>
+                    <input id="nome" name="nome" type="text" required class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-400 text-gray-400 bg-gray-700 rounded focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" placeholder="Nome Completo">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="cpf" class="sr-only">CPF</label>
+                        <input id="cpf" name="cpf" type="text" inputmode="numeric" required class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-400 text-gray-400 bg-gray-700 rounded focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" placeholder="CPF">
+                    </div>
+                    <div>
+                        <label for="telefone" class="sr-only">Telefone</label>
+                        <input id="telefone" name="telefone" type="tel" inputmode="tel" required class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-400 text-gray-400 bg-gray-700 rounded focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" placeholder="Telefone">
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="sr-only">E-mail</label>
+                    <input id="email" name="email" type="email" required class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-400 text-gray-400 bg-gray-700 rounded focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" placeholder="E-mail">
+                </div>
+            </div>
+                <div class="mt-6 mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-4">Indicação</h3>
+                    <div class="bg-gray-700 p-2 cursor-pointer rounded-lg border border-gray-600">
+                        <div>
+                            <input id="afid" name="afid" type="text" class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-400 text-gray-400 bg-gray-700 rounded0 focus:none outline-none" placeholder="Código de Indicação" value="{{ $cookieReferralCode ?? '' }}" @if(isset($cookieReferralCode)) readonly @endif>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mt-6 mb-4">
                     <h3 class="text-xl font-semibold text-white mb-4">Opções de Pagamento</h3>
                     <div class="bg-gray-700 p-4 cursor-pointer rounded-lg border border-blue-500">
@@ -72,7 +101,8 @@
                     </div>
                 </div>
 
-                <button type="submit" class="w-full flex justify-center py-2 mt-4 px-4 border border-transparent text-sm font-medium rounded text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                
+                <button type="submit" class="w-full text-center flex justify-center items-center py-3 px-6 border border-transparent text-sm font-medium rounded text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
                   <i class="fas fa-lock mr-2 text-emerald-500"></i> Concluir Compra
               </button>  
                 <p class="text-sm text-gray-400 mt-6 flex items-center">
@@ -191,10 +221,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>        
 @livewireScripts
 <script>
-      $(document).ready(function(){
-          $('#cpf').mask('000.000.000-00', {reverse: true});
-          $('#telefone').mask('(00) 00000-0000');
-      });
-  </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var cpfInput = document.getElementById('cpf');
+            var telefoneInput = document.getElementById('telefone');
+
+            cpfInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+            });
+
+            telefoneInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+            });
+        });
+    </script>
 </body>
 </html>

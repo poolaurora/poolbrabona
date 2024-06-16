@@ -75,8 +75,9 @@ class User extends Authenticatable
 
     public function afiliado()
     {
-        return $this->hasOne(Afiliados::class);
+        return $this->hasOne(Afiliados::class, 'user_id', 'id');
     }
+
 
     public function balance()
     {

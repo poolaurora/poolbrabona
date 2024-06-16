@@ -1,11 +1,4 @@
 <x-app-layout>
-<div class="overflow-hidden">
-    <div class="w-full h-full bg-gray-800 bg-opacity-95 fixed top-0 left-0 flex items-center justify-center">
-            <div class="bg-gray-900 p-6 rounded-lg text-white text-xl w-5/12 text-center">
-                <h1 class="p-4 text-2xl">Em Desenvolvimento</h1>
-                <span class="text-gray-400">O sistema de afiliados começou a ser desenvolvido! Em breve todos nossos usuários que tiverem um plano poderão ganhar recompensas indicando outras pessoas.</span>
-            </div>
-        </div>
     <div class="py-12">
         <div class="lg:w-6/12 w-10/12 mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-900 text-white p-8 rounded-lg shadow-lg">
@@ -65,6 +58,5 @@
             @endif    
             </div>
         </div>
-    </div>
-</div>        
+    </div>        
 </x-app-layout>

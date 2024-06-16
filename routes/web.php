@@ -41,9 +41,14 @@ Route::get('/set-cookie', function (Request $request) {
     return response('Cookie is set')->cookie($cookie);
 });
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    if ($request->has('ref')) {
+        return app()->call([AfiliadosController::class, 'CookieSaver'], ['ref' => $request->input('ref')]);
+    }
     return view('welcome');
 });
+
+
 
 Route::get('/about', function () {
     return view('about');
@@ -122,7 +127,7 @@ Route::middleware([
             Route::get('/instrucao', [AfiliadosController::class, 'index'])->name('afiliacao.index');
             Route::post('/join', [AfiliadosController::class, 'turnAfiliatte'])->name('afiliacao.join');
             Route::get('/bonus', [AfiliadosController::class, 'bonus'])->name('afiliacao.bonus');
-
+            Route::post('/resgate', [AfiliadosController::class, 'resgate'])->name('afiliacao.resgate');
         });
 
         Route::group(['prefix' => 'me'], function () {
