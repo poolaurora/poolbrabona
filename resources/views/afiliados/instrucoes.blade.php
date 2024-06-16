@@ -20,9 +20,8 @@
                 <h2 class="text-2xl font-semibold text-emerald-400 mt-6 mb-4">Recompensas</h2>
                 
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Para cada indicação sua que adquirir um plano Bear ou Lion <b class="text-lg">você irá ganhar uma sala de mineração compatilhada com duração de 30 minutos para 5 pessoas</b></li>
-                    <li>Para cada indicação sua que adquirir um plano Shark <b class="text-lg">você irá ganhar uma maquina de mineração no Lv. 02</b></li>
-                    <li>Upgrades, salas e maquinas adicionais <b class="text-lg">você irá uma recarga gratuita para uma de suas maquinas.</b></li>
+                    <li>Para cada indicação sua que adquirir um plano Bear ou Lion <b class="text-lg">uma máquina level 01 ou level 02</b></li>
+                    <li>Para cada indicação sua que adquirir um plano Shark <b class="text-lg">você irá ganhar uma maquina de mineração no Lv. 03</b></li>
                 </ul>
                 
                 <h2 class="text-2xl font-semibold text-emerald-400 mt-6 mb-4">Comece Agora</h2>

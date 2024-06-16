@@ -47,6 +47,10 @@ class AfiliadosController extends Controller
 {
     $user = auth()->user();
 
+    if (!$user->afiliado) {
+        return redirect()->route('afiliacao.index');
+    }
+
     // Supondo que o usuário tenha um relacionamento 'afiliado' que retorna um modelo com o código de afiliado
     $codigoAfiliado = $user->afiliado->codigo_afiliado;
 
