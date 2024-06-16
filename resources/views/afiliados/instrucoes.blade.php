@@ -14,7 +14,7 @@
                     <li>Ao se registrar, você receberá um código de afiliado exclusivo.</li>
                     <li>Compartilhe seu código com amigos, familiares ou nas suas redes sociais.</li>
                     <li>Quando alguém se registrar ou comprar um plano utilizando seu código, você ganhará uma comissão.</li>
-                    <li>Acompanhe suas referências e comissões no painel <a class="text-emerald-400" href="#">clicando aqui</a>.</li>
+                    <li>Acompanhe suas referências e comissões no painel <a class="text-emerald-400" href="{{ route('afiliacao.bonus') }}">clicando aqui</a>.</li>
                 </ul>
                 
                 <h2 class="text-2xl font-semibold text-emerald-400 mt-6 mb-4">Recompensas</h2>
