@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Services\FacebookConversionService;
 use App\Models\Checkout;
+use App\Models\Pixel;
 
 
 class FacebookTrack
@@ -21,6 +22,12 @@ class FacebookTrack
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
+
+        $pixel = Pixel::all();
+
+        if(!$pixel){
+            return $response;
+        }
 
         $url = $request->url();
         $eventData = $this->getEventData($request);
