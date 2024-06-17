@@ -20,26 +20,27 @@ class FacebookTrack
     }
 
     public function handle(Request $request, Closure $next)
-    {
-        $response = $next($request);
+{
+    $response = $next($request);
 
-        $pixel = Pixel::all();
-
-        if(!$pixel){
-            return $response;
-        }
-
-        $url = $request->url();
-        $eventData = $this->getEventData($request);
-
-        if (strpos($url, '/checkout/payment/') !== false) {
-            $this->conversionService->sendEvent('InitiateCheckout', $eventData);
-        } elseif (strpos($url, '/payment/success/') !== false) {
-            $this->conversionService->sendEvent('Purchase', $eventData);
-        }        
-
+    // Verifica se há pixels registrados
+    $pixels = Pixel::all();
+    if ($pixels->isEmpty()) {
         return $response;
     }
+
+    $url = $request->url();
+    $eventData = $this->getEventData($request);
+
+    if (strpos($url, '/checkout/payment/') !== false) {
+        $this->conversionService->sendEvent('InitiateCheckout', $eventData);
+    } elseif (strpos($url, '/payment/success/') !== false) {
+        $this->conversionService->sendEvent('Purchase', $eventData);
+    }
+
+    return $response;
+}
+
 
     protected function getEventData(Request $request)
     {
