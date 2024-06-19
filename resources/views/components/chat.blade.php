@@ -14,6 +14,9 @@
         </div>
         
         <div class="flex-grow overflow-y-auto h-5/6 flex flex-col-reverse px-4">
+            <div class="h-full text-center flex items-center">
+                <span class="text-gray-400">Chat temporariamente desabilitado, para manuntenção.</span>
+            </div>
             <!-- Chat messages will go here -->
             <div id="messageOutput">
             @foreach ($messages as $message)
@@ -110,6 +113,7 @@
         
         
         <div class="px-4 py-3 bg-gray-900">
+         <!--   
             <div class="relative">
             <form id="chatForm">
                     <input type="text" id="message" class="w-full pl-4 pr-10 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none" placeholder="Escreva sua mensagem...">
@@ -118,6 +122,7 @@
                       </button>    
                     </form>
             </div>
+        -->
         </div>
     </div>
 
@@ -133,6 +138,9 @@
               </div>
               
               <div class="flex-grow overflow-y-auto flex flex-col-reverse px-4">
+              <div class="h-full text-center flex items-center">
+                <span class="text-gray-400">Chat temporariamente desabilitado, para manuntenção.</span>
+            </div>
                   <!-- Chat messages will go here -->
                   <div id="messageOutput">
                     @foreach ($messages as $message)
@@ -229,6 +237,7 @@
               
               
               <div class="px-4 py-3 bg-gray-900">
+                <!--
                   <div class="relative">
                    <form id="chatForm">
                     <input type="text" id="message" class="w-full pl-4 pr-10 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none" placeholder="Escreva sua mensagem...">
@@ -237,6 +246,7 @@
                       </button>    
                     </form>
                   </div>
+                -->
               </div>
       </div>      
 </div>

@@ -34,6 +34,11 @@ class MessageController extends Controller
             'role' => 'required|string'
         ]);
 
+        return response()->json([
+            'success' => false,
+            'error' => 'Chat em Manutenção.'
+        ]);
+
         // Encontra o usuário pelo username
         $user = User::where('username', $validatedData['username'])->first();
         $keywords = Keyword::all()->pluck('keyword'); // Assume que você tem um modelo Keyword
