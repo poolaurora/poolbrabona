@@ -1074,7 +1074,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-8 md:mb-0">
                     <img loading="lazy" class="w-20" src="https://aurora-miner.b-cdn.net/images/logo-no-bg.webp">
-                    <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>53.789.138/0001-88<br>AV ALÍCIO ARANTES CAMPOLINA, PIONEIRO 2882 - PR</p>
+                    <p class="text-gray-400 text-xs">© 2024 Aurora Miner Tecnologia.<br>53.789.138/0001-88</p>
                 </div>
                 <div class="mb-8 md:mb-0">
                     <h6 class="font-semibold mb-4">Recursos</h6>

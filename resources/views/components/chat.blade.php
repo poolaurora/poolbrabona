@@ -15,7 +15,7 @@
         
         <div class="flex-grow overflow-y-auto h-5/6 flex flex-col-reverse px-4">
             <div class="h-full text-center flex items-center">
-                <span class="text-gray-400">Chat temporariamente desabilitado, para manuntenção.</span>
+                <span class="text-gray-400">Chat temporariamente desabilitado, para manutenção.</span>
             </div>
             <!-- Chat messages will go here -->
             <div id="messageOutput">
@@ -139,7 +139,7 @@
               
               <div class="flex-grow overflow-y-auto flex flex-col-reverse px-4">
               <div class="h-full text-center flex items-center">
-                <span class="text-gray-400">Chat temporariamente desabilitado, para manuntenção.</span>
+                <span class="text-gray-400">Chat temporariamente desabilitado, para manutenção.</span>
             </div>
                   <!-- Chat messages will go here -->
                   <div id="messageOutput">
